@@ -1,0 +1,43 @@
+# This part is taken from https://github.com/github/gitignore
+# ===========================================================
+
+## Core latex/pdflatex auxiliary files:
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
+
+## Intermediate documents:
+*.dvi
+*.xdv
+*-converted-to.*
+
+## Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
+
+# This part added by NC
+# =====================
+#
+## other auxiliary files I came across:
+**/*.thm
+**/*_latexmk
+**/*.synctex.gz
+**/*.DS_Store
+#
+## do not track pdf's, unless they are figures
+paper/*.pdf
+response_to_referees/*.pdf
+!paper/figs/*.pdf
