@@ -18,7 +18,7 @@ You can preview the slides of the course
 
 These slides were generated with [quarto](https://quarto.org/). Assuming you
 have installed quarto, you can generate the html file like this:
-```
+```{bash}
 pandoc render slides.qmd --to revealjs
 ```
 
@@ -39,8 +39,8 @@ TODO
 ## .gitignore
 
 As explained in the course, when you use git to keep track of a LaTeX document,
-it is best to keep track of only the **source files** (i.e., *.tex, *.bib, plus
-figures typically in pdf format). We want to tell git to ignore: 
+it is best to keep track of the **source files** (i.e., *.tex, *.bib, plus
+figures typically in pdf format) only. We want to tell git to ignore: 
 
 * the intermediary files  generated during compilation (log, aux, etc.).
 
