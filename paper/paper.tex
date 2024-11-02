@@ -1,36 +1,68 @@
-\documentclass{amsart}
+\documentclass{scrartcl}  % article class from KOMA-Script (A4 compatible)
 
-% PACKAGES
-%%%%%%%%%%
+% Essential packages
+% ==================
 
-% Essential 
-\usepackage[utf8]{inputenc} % encoding 
-\usepackage[T1]{fontenc} % also needed for accents, etc. 
-\usepackage{amsmath, amssymb, amsthm, amsfonts} % absolute essential for math
-\usepackage{mathtools} % extends amsmath, add coloneqq for :=
-\usepackage{graphicx} % figures
-\usepackage[authoryear]{natbib} % bibliography (author-year style for citations)
+% encodings and fonts
+\usepackage[utf8]{inputenc}  % input encoding 
+\usepackage[T1]{fontenc}  % font (output) encoding
+\usepackage{lmodern}
 
-% Often useful
-\usepackage{cleverref} % *before* hyperref
-\usepackage{hyperref} % hyper-links 
-\usepackage{dsfont} % mathds{1} for indicator (part of doublestroke package)
-\usepackage{algorithm2e} % algorithms
+% math
+\usepackage{amsmath}  % main AMS package
+\usepackage{amsthm}  % theorems (still need to define theorem envs, see below)
+\usepackage{amssymb}  % math symbols, e.g. \mathbb{R}
+\usepackage{amsfonts}  % better fonts for math
+\usepackage{mathtools}  % extends amsmath (e.g. \eqcolon)
 
-% revision process
-\usepackage{todonotes} % as the name suggests
+% figures
+\usepackage{graphicx}
 
-% Books / thesis
-\usepackage{glossaries} % as the name suggests
-\usepackage{geometry}  % or use e.g. KOMA style
-% babel TODO
+% bibliography
+\usepackage[authoryear]{natbib}
+%\usepackage[numbers, square]{natbib}  % use this instead for numbered refs
+\bibliographystyle{apalike}  % see natbib doc for other styles 
+% Note: the journal will provide its own style
 
-% MACROS
-%%%%%%%%
+% Recommended packages
+% ====================
 
-% TODO
+\usepackage{hyperref}  % hyper-links in PDF
+\usepackage{cleveref}  % Clever cross-references; must be loaded *after* hyperref
+\usepackage{dsfont}  % mathds{1} for indicator (part of doublestroke package)
+\usepackage{algorithm2e}  % algorithms
+
+% Packages that may be useful in certain cases (uncomment if needed)
+% ==================================================================
+
+% PhD thesis, book
+%\usepackage{glossaries}  % as the name suggests
+%\usepackage[a4paper]{geometry}  % or use a KOMA class (scrbook for books)
+%\usepackage[french, english]{babel}  % use both languages in same document
+
+% revision
+%\usepackage{todonotes}  % as the name suggests
+
+% Theorems environments (amsthm)
+% ==============================
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+\newtheorem{rem}{Remark}
+
+% Macros (don't go crazy!)
+% ========================
+
+\newcommand{\R}{\mathbb{R}}
 
 \begin{document}
+
+\title{My first paper}
+\author{P. H. Dee \and Super Visor}
+% \institute{University of Andromeda}
+\date{}  % put \today for current date
+\maketitle
 
 \begin{abstract}
   This is the abstract. Usually no math here (in doubt, check the journal
@@ -39,27 +71,53 @@
 
 \section{Introduction}\label{sec:intro}
 
-A gentle introduction to stuff.
+This is the introduction, where we may cite the book of \citet{book_sasha}, or
+the paper by \citet{cristina_arxiv}.  We can also do citations in parenthesis
+\citep{anna_mirror}.
 
-\section{Theory}%
-\label{sec:Theory}
 
-A very important equation:
-\[ \int_0^{2\pi} \sin(x) dx = 0. \]
+\section{Main results}\label{sec:results}
 
-Recall that:
-\begin{itemize}
-  \item No blank line \emph{before} an equation. 
-  \item Function $\sin$ is a math operator, TODO.
-\end{itemize}
+No blank line before an equation:
+\[ \int_0^1 \sin(x) dx = 0
+\]
+and no blank line after, unless the equation ends the paragraph. (In that case,
+add a dot at the end of the equation.)
 
-A multi-line equation:
-\begin{align}
-  \label{eq:}
-  f(x) = 
-  
-\end{align}
+We are very proud of our theorem.
+\begin{thm}
+  For all $x \in \R$, we have $x^2 > 0$.
+\end{thm}
+Its proof is in the appendix.
 
+This theorem has a nice corollary:
+\begin{cor}
+  For all $x \in \R$, $x^4 > 0$.
+\end{cor}
+
+\section{Numerical experiments}\label{sec:numerics}
+
+Time to show a nice image; see \cref{fig:boxplot_first}.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.4]{figs/phd_guilt.jpg}
+  \end{center}
+  \caption{credits: PhD comics}
+  \label{fig:boxplot_first}
+\end{figure}
+
+
+\bibliography{bib/my_biblio}
+
+\appendix
+
+\section*{Proofs}
+
+The proof of our theorem:
+\begin{proof}
+  The proof is left as an exercise to the astute reader.
+\end{proof}
 
 \end{document}
 
