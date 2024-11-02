@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="slides_files/libs/clipboard/clipboard.min.js"></script>
+<script src="slides_files/libs/quarto-html/tabby.min.js"></script>
+<script src="slides_files/libs/quarto-html/popper.min.js"></script>
+<script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.32">
+
+  <meta name="author" content="Nicolas Chopin">
+  <title>Best practices for (collaborative) LaTeX</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto-bad3b615ab60818c82c144de403e98d5.css">
+  <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Best practices for (collaborative) LaTeX</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Nicolas Chopin 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:nicolas.chopin@ensae.fr">nicolas.chopin@ensae.fr</a>
+</div>
+        <p class="quarto-title-affiliation">
+            ENSAE, IPP
+          </p>
+    </div>
+</div>
+
+</section>
+<section>
+<section id="introduction" class="title-slide slide level1 center">
+<h1>Introduction</h1>
+
+</section>
+<section id="target-audience" class="slide level2">
+<h2>Target audience</h2>
+<p>PhD students:</p>
+<ul>
+<li class="fragment"><p>who are a bit familiar with LaTeX (typically through Overleaf)</p></li>
+<li class="fragment"><p>who need to write <strong>scientific papers</strong> and submit them (arxiv, journal, ML conf)</p></li>
+<li class="fragment"><p>jointly with other authors (e.g., the grumpy PhD advisor)</p></li>
+</ul>
+</section>
+<section id="my-perspective" class="slide level2">
+<h2>My perspective</h2>
+<ul>
+<li class="fragment"><p>A 50y mathematician who had to use LaTeX since his first paper (and pulled his hair out a few times over it).</p></li>
+<li class="fragment"><p>big fan of open source, mostly for <strong>practical</strong> reasons.</p></li>
+</ul>
+</section>
+<section id="a-few-words-about-overleaf" class="slide level2">
+<h2>A few words about Overleaf</h2>
+<p>I am not here to tell you which tool to use or not. Consider the following points however:</p>
+<ul>
+<li class="fragment"><p>Do you regularly back up your files? What if</p>
+<ul>
+<li class="fragment">you cannot login (no connexion, the site is down, etc.)</li>
+<li class="fragment">the company goes bust</li>
+<li class="fragment">Overleaf <em>enshitiffies</em></li>
+</ul></li>
+<li class="fragment"><p>Is running an editor <em>inside</em> your browser a good idea? (e.g., keyboard shortcuts)</p></li>
+<li class="fragment"><p>Is sending an overleaf link to co-authors out of the blue is really polite?</p></li>
+</ul>
+</section>
+<section id="a-few-words-about-your-phd" class="slide level2">
+<h2>A few words about your PhD</h2>
+<p>PhD = 3 years to reflect on the <strong>tools</strong> (and workflow) for the rest of your career.</p>
+</section></section>
+<section>
+<section id="preliminaries" class="title-slide slide level1 center">
+<h1>Preliminaries</h1>
+
+</section>
+<section id="what-is-going-on" class="slide level2">
+<h2>What is going on?</h2>
+
+<img data-src="figs/bad_encoding.png" style="width:60.0%" class="r-stretch"></section>
+<section id="text-files-and-encodings" class="slide level2">
+<h2>Text files and encodings</h2>
+<p>LaTeX source files are <strong>text files</strong>, with no meta-data, in particular no specification of which <strong>encoding</strong> you use.</p>
+<ul>
+<li class="fragment"><p>Encoding: Characters <span class="math inline">\(\Rightarrow\)</span> numbers (codes)</p></li>
+<li class="fragment"><p>Decoding: Numbers <span class="math inline">\(\Rightarrow\)</span> Characters</p></li>
+<li class="fragment"><p>ASCII: one of the first (and still widely used) encoding; a character = 7 bits, works only for US English (no symbol).</p></li>
+<li class="fragment"><p>Latin-1 (ISO 8859-1): superset of ASCII, a character = 8 bits = 1 byte, works for European languages.</p></li>
+<li class="fragment"><p>UTF-8 (unicode): now the recommended standard; superset of ASCII, a character may takes from 1 to 3 bytes.</p></li>
+</ul>
+</section>
+<section id="ascii-table" class="slide level2">
+<h2>ASCII table</h2>
+
+<img data-src="figs/ascii_table.png" style="width:70.0%" class="r-stretch"></section>
+<section id="rise-of-utf-8" class="slide level2">
+<h2>Rise of UTF-8</h2>
+
+<img data-src="figs/rise_of_utf8.png" class="quarto-figure quarto-figure-right r-stretch"></section>
+<section id="encoding-in-practice-in-latex" class="slide level2">
+<h2>Encoding in practice in latex</h2>
+<p>Make sure that:</p>
+<ol type="1">
+<li class="fragment"><p>Your text editor is in UTF-8 mode.</p></li>
+<li class="fragment"><p>Your tex file includes:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href=""></a> \usepackage[utf8]{inputenc} % encoding for input (this file)</span>
+<span id="cb1-2"><a href=""></a> \usepackage[T1]{fontenc} % font encoding (output)</span>
+<span id="cb1-3"><a href=""></a> \usepackage{lmodern} % better fonts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<div class="fragment">
+<p>You need <strong>BOTH</strong>.</p>
+</div>
+</section>
+<section id="further-notes-on-encodings" class="slide level2">
+<h2>Further notes on encodings</h2>
+<ul>
+<li class="fragment"><p>UTF-8 became the standard encoding in 2018. However, keep the <code>inputenc</code> command to be safe.</p></li>
+<li class="fragment"><p>Of course, when you write in English, encoding is less of an issue, but you might need to quote names with accents: Bézout theorem, Hölder inequality, Césaro theorem, Lévy processes, etc.</p></li>
+<li class="fragment"><p>You can also enter accents in LaTeX like this: <code>\'e</code>, <code>\'e</code>, <code>\"a</code>, see section on bibtex</p></li>
+</ul>
+</section>
+<section id="paper-size" class="slide level2">
+<h2>Paper size</h2>
+<ul>
+<li class="fragment"><p>A4 (210 mm <span class="math inline">\(\times\)</span> 297 mm): the most standard paper size everywhere…</p></li>
+<li class="fragment"><p>except in the US, Canada, … where they use the letter format (215.9 mm <span class="math inline">\(\times\)</span> 279.4 mm)</p></li>
+<li class="fragment"><p>Unfortunately, LaTeX still defaults to the letter format. Keep this in mind for your thesis.</p></li>
+<li class="fragment"><p>Not an issue for journal papers.</p></li>
+</ul>
+</section>
+<section id="style-guides-in-computer-languages" class="slide level2">
+<h2>Style guides in computer languages</h2>
+<p>Several computer languages (e.g., Python, see PEP 8) have strong conventions about:</p>
+<ul>
+<li class="fragment"><p>indentation</p></li>
+<li class="fragment"><p>blank lines</p></li>
+<li class="fragment"><p>hard wrapping</p></li>
+<li class="fragment"><p>…</p></li>
+</ul>
+<div class="fragment">
+<p>All these conventions are here to make the code more <strong>readable</strong>.</p>
+</div>
+<div class="fragment">
+<p>See also this ENSAE <a href="https://ensae-reproductibilite.github.io/website/">course</a>.</p>
+</div>
+</section>
+<section id="style-guide-for-latex" class="slide level2">
+<h2>Style guide for LaTeX?</h2>
+<p>Not so clear, but still recommended to use white space <strong>liberally</strong> to make your code readable:</p>
+<ul>
+<li class="fragment"><p>in-line math: <code>$(x + 1)^2 = x^2 + 2x + 1$</code>.</p></li>
+<li class="fragment"><p>environments: <code>\begin{}</code> and <code>\end{}</code> on a separate lines, indendation inside block:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href=""></a>\begin{equation}\label{eq:average}</span>
+<span id="cb2-2"><a href=""></a>  \widehat{\theta}_n = \frac{1}{n} \sum_{i=1}^n X_i</span>
+<span id="cb2-3"><a href=""></a>\end{equation}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li class="fragment"><p>blank lines between paragraphs (<strong>NOT</strong> <code>\\</code>).</p></li>
+<li class="fragment"><p>one (or two) blank line(s) before/after <code>\section{...}</code>.</p></li>
+<li class="fragment"><p>Hard wrapping at least for equations.</p></li>
+</ul>
+</section>
+<section id="markdown" class="slide level2">
+<h2>Markdown</h2>
+<p>May replace latex, especially for slides.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource {markdown} number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href=""></a>---</span>
+<span id="cb3-2"><a href=""></a>title: My course</span>
+<span id="cb3-3"><a href=""></a>name: Toto</span>
+<span id="cb3-4"><a href=""></a>institute: University of Oxbridge</span>
+<span id="cb3-5"><a href=""></a>---</span>
+<span id="cb3-6"><a href=""></a></span>
+<span id="cb3-7"><a href=""></a># First slide</span>
+<span id="cb3-8"><a href=""></a></span>
+<span id="cb3-9"><a href=""></a>* First point: $(x + 1)^2 = x^2 + 2x + 1$</span>
+<span id="cb3-10"><a href=""></a></span>
+<span id="cb3-11"><a href=""></a>* Second point: I can also add an equation:</span>
+<span id="cb3-12"><a href=""></a>  $$ (x + 1)^3 = x^3 + 3 x^2  + 3 x + 1$$</span>
+<span id="cb3-13"><a href=""></a></span>
+<span id="cb3-14"><a href=""></a># Second slide</span>
+<span id="cb3-15"><a href=""></a></span>
+<span id="cb3-16"><a href=""></a>I would like to *emphasise* this **very important** list.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="markdown-latex" class="slide level2">
+<h2>Markdown =&gt; LaTeX</h2>
+<p>You can convert Markdown to LaTeX using the command-line tool <a href="https://pandoc.org/">pandoc</a>.</p>
+<div class="fragment">
+<p>Or, better, use <a href="https://quarto.org/">quarto</a> (which relies on <code>pandoc</code>) to write:</p>
+<ul>
+<li class="fragment"><p>slides (and compile them directly into pdf, or html)</p></li>
+<li class="fragment"><p>your web-site</p></li>
+<li class="fragment"><p>a blog</p></li>
+<li class="fragment"><p>etc.</p></li>
+</ul>
+</div>
+</section>
+<section id="see-also" class="slide level2">
+<h2>See also</h2>
+<p><a href="https://typst.app/">typst</a></p>
+</section></section>
+<section>
+<section id="latex-history-main-concepts" class="title-slide slide level1 center">
+<h1>LaTeX: history, main concepts</h1>
+
+</section>
+<section id="history" class="slide level2">
+<h2>History</h2>
+<div class="columns">
+<div class="column" style="width:68%;">
+<ul>
+<li class="fragment">1977: <a href="https://fr.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a>, disappointed by the galley proofs of the 2nd ed.&nbsp;of <em>The art of computer programming</em>, set to design his own typesetting system, <strong>TeX</strong>.</li>
+</ul>
+</div><div class="column" style="width:29%;">
+<center>
+<img src="figs/DonaldKnuth.jpg" width="62%" align="middle">
+</center>
+</div><div class="column" style="width:68%;">
+<ul>
+<li class="fragment">1984: first release of LaTeX, a set of TeX macros by <a href="https://en.wikipedia.org/wiki/Leslie_Lamport">Leslie Lamport</a> (The corresponding book sold <span class="math inline">\(\mathcal{O}(10^5)\)</span> copies.)</li>
+</ul>
+</div><div class="column" style="width:29%;">
+<center>
+<img src="figs/Leslie_Lamport.jpg" width="62%" align="middle">
+</center>
+</div></div>
+<ul>
+<li class="fragment">1994: release of LaTeX-<span class="math inline">\(2\varepsilon\)</span>, the <em>current</em> version.</li>
+</ul>
+</section>
+<section id="practical-consequences" class="slide level2">
+<h2>Practical consequences</h2>
+<ul>
+<li class="fragment"><p>Avoid tex directives in LaTeX, they are too <strong>low-level</strong>. (We will give examples later.)</p></li>
+<li class="fragment"><p>LaTeX is pretty old. It stood the test of times, but it has also its quirks:</p>
+<ul>
+<li class="fragment"><p>designed before UTF-8 was a thing (see above)</p></li>
+<li class="fragment"><p>very verbose</p></li>
+<li class="fragment"><p>debugging is <strong>not fun</strong>: error messages are <strong>cryptic</strong>, and even when it runs without error messages, it may be hard to understand why you did get the desired result.</p></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p><strong>Recommendation</strong>: compile very often, to catch errors early.</p>
+</div>
+</section>
+<section id="main-concept-behind-tex-latex" class="slide level2">
+<h2>Main concept behind TeX / LaTeX</h2>
+<p><strong>Separate contents from formatting</strong></p>
+<p>In practice, don’t bother about formatting until the very end of the writing process.</p>
+<div class="fragment">
+<p>Even then, you should not spend too much time on it. This will be taken care by the journal at the end of the line.</p>
+</div>
+</section>
+<section id="latex-commands" class="slide level2">
+<h2>LaTeX commands</h2>
+<p>When we say LaTeX, we mean both:</p>
+<ol type="1">
+<li class="fragment"><p>The language</p></li>
+<li class="fragment"><p>the “compilers” (latex, pdflatex, luatex, etc.)</p></li>
+</ol>
+<div class="fragment">
+<p>These days, most people use <code>pdflatex</code> which does: tex -&gt; pdf. This implies that all the images we want to include are in pdf (or png, jpeg) format.</p>
+</div>
+<div class="fragment">
+<p>A few years ago, it was still common to do tex -&gt; dvi -&gt; ps through <code>latex</code>, then <code>dvips</code> (Using images in ps or eps format).</p>
+</div>
+</section></section>
+<section>
+<section id="latex-math" class="title-slide slide level1 center">
+<h1>LaTeX: math</h1>
+
+</section>
+<section id="the-ams-packages" class="slide level2">
+<h2>The AMS packages</h2>
+<p>AMS = American Mathematical Association.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href=""></a>\usepackage{amsmath} % main AMS package</span>
+<span id="cb4-2"><a href=""></a>\usepackage{amsthm} % theorems (must define your own theorem envs)</span>
+<span id="cb4-3"><a href=""></a>\usepackage{amssymb} % math symbols, e.g. \mathbb{R}</span>
+<span id="cb4-4"><a href=""></a>\usepackage{amsfonts} % better fonts for math</span>
+<span id="cb4-5"><a href=""></a>\usepackage{mathtools} % extends amsmath (e.g. \eqcolon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Essential packages, the rest of this section assumes they are used.</p>
+</section>
+<section id="in-line-math" class="slide level2">
+<h2>In-line math</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href=""></a>$ log L(x) = log f(x) + ..., f(x) := exp(-\frac{x^2}{2})$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Q: What’s wrong with this?</p>
+<ul>
+<li class="fragment"><p><code>log</code>, <code>exp</code> should be <code>\log</code>, <code>\exp</code>; see next slide on <strong>math operators</strong>;</p></li>
+<li class="fragment"><p>grammatical commas, dots, should be <strong>outside</strong></p></li>
+<li class="fragment"><p>avoid if possible fractions in in-line math (too little vertical space)</p></li>
+<li class="fragment"><p>Replace <code>:=</code> by <code>\coloneq</code> and <code>...</code> by <code>\dots</code> (see macros)</p></li>
+</ul>
+<div class="fragment">
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href=""></a>$ \log L(x) = \log f(x) + \dots$, $f(x) \coloneq \exp(-x^2 / 2)$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="math-operators" class="slide level2">
+<h2>Math Operators</h2>
+<ul>
+<li class="fragment"><p>LaTeX name for functions, e.g.&nbsp;<code>\sin</code>, <code>\exp</code>, or other words that appear in math such as <code>\lim</code>, <code>\arg</code>, <code>\max</code>. Note: argmax is <code>\arg\max</code>.</p></li>
+<li class="fragment"><p>Without the backlash: wrong font and wrong spacings; <span class="math inline">\(sin\theta\)</span> vs <span class="math inline">\(\sin\theta\)</span>.</p></li>
+<li class="fragment"><p>You can define your own operators like this</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href=""></a>\DeclareMathOperator{\sinc}{sinc}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<div class="fragment">
+<p>Better than using <code>\newcommand</code> directly. See the <a href="https://ctan.org/pkg/amsmath">amsmath</a> doc for more details on operators (e.g., options).</p>
+</div>
+</section>
+<section id="parentheses-brackets-curly-brackets" class="slide level2">
+<h2>Parentheses, brackets, curly brackets</h2>
+<p><span class="math display">\[ \pi(x) \propto \exp(f(x))\]</span></p>
+<p>Q: What’s wrong with it?</p>
+<div class="fragment">
+<p>Try to avoid sequences of identical delimiters:</p>
+<ol type="1">
+<li class="fragment"><p>Use <span class="math inline">\([ \{ ( \dots ) \} ]\)</span>.</p></li>
+<li class="fragment"><p>or use <code>\left( ... \right)</code> for scaled parentheses.</p></li>
+<li class="fragment"><p><strong>Tip</strong>: you can also set the scale manually with <code>\big(</code>, <code>\Big(</code>, <code>\bigg(</code> and <code>\Bigg(</code>. Useful for multi-line eqs.</p></li>
+</ol>
+</div>
+</section>
+<section id="single-line-equations-un-labelled" class="slide level2">
+<h2>Single-line equations (un-labelled)</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href=""></a>$$\hat{\theta}_n = \frac{1}{n}\sum_{i=1}^n \left(x_i - \bar{x}\right)^2$$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Q: What’s wrong with this?</p>
+<div class="fragment">
+<p><code>$$...$$</code> is a TeX (low-level) command; use instead</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href=""></a>\[ \hat{\theta}_n = \frac{1}{n}\sum_{i=1}^n \left(x_i - \bar{x}\right)^2</span>
+<span id="cb9-2"><a href=""></a>\]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href=""></a>\begin{equation*} </span>
+<span id="cb10-2"><a href=""></a>  \hat{\theta}_n = \frac{1}{n}\sum_{i=1}^n \left(x_i - \bar{x}\right)^2</span>
+<span id="cb10-3"><a href=""></a>\end{equation*}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Otherwise, wrong spacings, and some options may not work (e.g., <code>lefteqn</code>).</p>
+</div>
+</section>
+<section id="equations-and-paragraphs" class="slide level2">
+<h2>Equations and paragraphs</h2>
+<p>Q: Should we put a blank line before/after an equation?</p>
+<div class="fragment">
+<ul>
+<li class="fragment"><p>A blank line in LaTeX means a new paragraph.</p></li>
+<li class="fragment"><p>You should <strong>never</strong> start a new paragraph with an equation. <span class="math inline">\(\Rightarrow\)</span> no blank line before.</p></li>
+<li class="fragment"><p><strong>If</strong> your paragraph ends with an equation, put a blank line after; don’t forget to put a dot at the end of the equation.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a href=""></a>To conclude, we have that:</span>
+<span id="cb11-2"><a href=""></a>\begin{equation}</span>
+<span id="cb11-3"><a href=""></a>  E = MC^2.</span>
+<span id="cb11-4"><a href=""></a>\end{equation}</span>
+<span id="cb11-5"><a href=""></a></span>
+<span id="cb11-6"><a href=""></a>Start of next paragraph...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="multi-line-equations" class="slide level2">
+<h2>Multi-line equations</h2>
+<p>You need mainly <strong>one</strong> environment for multi-line equations:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a href=""></a>\begin{align*}</span>
+<span id="cb12-2"><a href=""></a>    f(x) &amp; = x + 3 + \int_0^1 f(t) dt \\</span>
+<span id="cb12-3"><a href=""></a>         &amp; = z - 5 + \sin(2\pi v)  \\</span>
+<span id="cb12-4"><a href=""></a>         &amp; \qquad - \sum_{k=0}^\infty u_k + \exp\{ g(z) - \widehat{g}(z) \}</span>
+<span id="cb12-5"><a href=""></a>\end{align*}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="math display">\[\begin{align*}
+    f(x) &amp; = x + 3 + \int_0^1 f(t) dt \\
+         &amp; = z - 5 + \sin(2\pi v)  \\
+         &amp; \qquad - \sum_{k=0}^\infty u_k + \exp\{ g(z) - \widehat{g}(z) \}
+\end{align*}\]</span></p>
+</section>
+<section id="alternatives" class="slide level2">
+<h2>Alternatives</h2>
+<ul>
+<li class="fragment"><p>un-starred version <code>\begin{align} ... \end{align}</code> to get labels. Use <code>\nonumber</code> on a given line if you don’t want that line to be labelled.</p></li>
+<li class="fragment"><p>To get a single label for the whole equation:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href=""></a>\begin{equation}\label{eq:the_whole_equation}</span>
+<span id="cb13-2"><a href=""></a>  \begin{split}</span>
+<span id="cb13-3"><a href=""></a>    f(x) &amp; = x + 3 + \int_0^1 f(t) dt \nonumber \\</span>
+<span id="cb13-4"><a href=""></a>         &amp; = z - 5 - \\</span>
+<span id="cb13-5"><a href=""></a>         &amp; \quad - \sum_{k=0}^\infty u_k</span>
+<span id="cb13-6"><a href=""></a>  \end{split}</span>
+<span id="cb13-7"><a href=""></a>\end{equation}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li class="fragment"><p><strong>DO NOT</strong> use deprecated environments like <code>eqnarray</code> (more complicated to use, bad spacing).</p></li>
+</ul>
+</section>
+<section id="another-multi-line-environment-that-is-sometimes-useful" class="slide level2">
+<h2>Another multi-line environment that is sometimes useful</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a href=""></a>\begin{multline}</span>
+<span id="cb14-2"><a href=""></a>  f(x) = \int_0^x \sin(3 y)  \exp\{ - 3 y x\} \mathrm{d}y \\</span>
+<span id="cb14-3"><a href=""></a>         + \sum_{k} \log(x-k) - \prod_{i=1}^7 \exp(-i)</span>
+<span id="cb14-4"><a href=""></a>\end{multline}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="math display">\[\begin{multline}
+  f(x) = \int_0^x \sin(3 y)  \exp\{ - 3 y x\} \mathrm{d}y \\
+         + \sum_{k} \log(x-k) - \prod_{i=1}^7 \exp(-i)
+\end{multline}\]</span> First line flushed left, last line flushed right, other lines centered.</p>
+</section>
+<section id="theorem-environments" class="slide level2">
+<h2>Theorem environments</h2>
+<p>The package <code>amsthm</code> does not actually define any theorem environments, you need to define yours. For instance,</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a href=""></a>\newtheorem{thm}{Theorem}</span>
+<span id="cb15-2"><a href=""></a>\newtheorem{cor}{Corollary}</span>
+<span id="cb15-3"><a href=""></a>\newtheorem{prop}{Proposition}</span>
+<span id="cb15-4"><a href=""></a>\newtheorem{lem}{Lemma}</span>
+<span id="cb15-5"><a href=""></a>\newtheorem{rem}{Remark}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="theorems-bis" class="slide level2">
+<h2>Theorems bis</h2>
+<p>Then you can state your theorems like this:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a href=""></a>\begin{theorem}[La Palice]</span>
+<span id="cb16-2"><a href=""></a>  For any $x&gt;0$, we have $x^2&gt;0$. </span>
+<span id="cb16-3"><a href=""></a>\end{theorem}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The part in <code>[La Palice]</code> is optional.</p>
+</section>
+<section id="proofs" class="slide level2">
+<h2>Proofs</h2>
+<p>There is a <code>proof</code> environment: use it.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a href=""></a>\begin{proof}</span>
+<span id="cb17-2"><a href=""></a>  Obvious.</span>
+<span id="cb17-3"><a href=""></a>\end{proof}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+</div>
+</section>
+<section id="text-in-equations" class="slide level2">
+<h2>Text in equations</h2>
+<p>To write text in equations, use… <code>\text</code>:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href=""></a>\[</span>
+<span id="cb18-2"><a href=""></a>   x^2 &gt; 0, \text{for all} x &gt;0</span>
+<span id="cb18-3"><a href=""></a>\]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="integrals" class="slide level2">
+<h2>Integrals</h2>
+<p>To get a thin space between function and integral, and a roman d:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb19-1"><a href=""></a>\newcommand*\dd{\mathop{}\!\mathrm{d}}</span>
+<span id="cb19-2"><a href=""></a></span>
+<span id="cb19-3"><a href=""></a>$\int_0^1 f(x) \dd x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>which gives: <span class="math inline">\(\int_0^1 f(x)\mathop{}\!\mathrm{d}x\)</span>.</p>
+</section></section>
+<section>
+<section id="latex-macros" class="title-slide slide level1 center">
+<h1>LaTeX: macros</h1>
+
+</section>
+<section id="basics" class="slide level2">
+<h2>Basics</h2>
+<p>Macro = user-defined command.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb20-1"><a href=""></a>\newcommand{\R}{\mathbb{R}}  % set of real numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Macros are <strong>tricky</strong> in collaborative settings. When you want to define a macro:</p>
+<ul>
+<li class="fragment"><p>Make sure that a similar macro has not already been defined by one of your co-authors.</p></li>
+<li class="fragment"><p>Try to make it as <strong>readable</strong> as possible: a good macro is <strong>semantic</strong>.</p></li>
+<li class="fragment"><p>Don’t hesitate to add a comment as above.</p></li>
+</ul>
+</div>
+</section>
+<section id="macros-motivation" class="slide level2">
+<h2>Macros: motivation</h2>
+<ul>
+<li class="fragment"><p>Saving a few keystrokes? <strong>bad reason</strong>. For this, use editor features such as completion, snippets, etc.</p></li>
+<li class="fragment"><p>Ensuring <strong>consistency</strong>? <strong>Good reason</strong>.</p></li>
+</ul>
+</section>
+<section id="examples-of-good-semantics-already-defined" class="slide level2">
+<h2>Examples of good semantics (already defined)</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Macro</th>
+<th>Better than</th>
+<th>means</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\emph</code></td>
+<td><code>\textit</code></td>
+<td>Emphasis</td>
+<td><em>unbiased</em></td>
+</tr>
+<tr class="even">
+<td><code>\to</code></td>
+<td><code>\rightarrow</code></td>
+<td>limit</td>
+<td>As <span class="math inline">\(x \to 0\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\gets</code></td>
+<td><code>\leftarrow</code></td>
+<td>gets</td>
+<td><span class="math inline">\(x \gets 0\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\implies</code></td>
+<td><code>\Rightarrow</code></td>
+<td>implies</td>
+<td><span class="math inline">\(\implies\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\top</code></td>
+<td><code>x^T</code></td>
+<td>matrix transpose</td>
+<td><span class="math inline">\(A^{\top}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\dots</code></td>
+<td><code>\cdots</code>, <code>\ldots</code></td>
+<td>ellipsis</td>
+<td><span class="math inline">\(x=1, \dots, n\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-of-a-very-bad-macro" class="slide level2">
+<h2>Example of a very bad macro</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a href=""></a> \newcommand{\pf}{\begin{proof}} % hide structure behind ridiculous macro</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Use this only if you hate your co-authors.</p>
+</div>
+</section>
+<section id="renewcommand" class="slide level2">
+<h2>Renewcommand</h2>
+<p>It’s possible to re-define existing commands:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a href=""></a> \renewcommand{\P}{\mathbb{P}} % Probability symbol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Just don’t. Again, readability.</p>
+</div>
+</section></section>
+<section>
+<section id="latex-cross-references-and-spaces" class="title-slide slide level1 center">
+<h1>LaTeX: cross-references (and spaces)</h1>
+
+</section>
+<section id="basics-1" class="slide level2">
+<h2>Basics</h2>
+<p>You can refer to: an equation, a figure, a table, a section, a sub-section, a chapter, …</p>
+<div class="fragment">
+<p>To do so, you put a label like this:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb23-1"><a href=""></a>\section{Introduction}\label{sec:intro}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>and then you refer to it later using command <code>\ref{sec:intro}</code>.</p>
+</div>
+</section>
+<section id="references-are-tricky" class="slide level2">
+<h2>References are tricky</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb24-1"><a href=""></a>See (\ref{variance}) in Sect. \ref{variance2} for.. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Q: What’s wrong with this?</p>
+<div class="fragment">
+<ul>
+<li class="fragment"><p>Missing unbreakable spaces:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb25-1"><a href=""></a>See~(\ref{variance}) in Sect.~\ref{variance2} for...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li class="fragment"><p>Recommended to name labels according to their types (originates from package <code>fancyref</code>, but useful even if you don’t use it):</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb26-1"><a href=""></a>See~(\ref{eq:variance}) in Sect.~\ref{sec:variance} for... </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li class="fragment"><p>Better to use <code>\eqref</code> to refer to an equation:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb27-1"><a href=""></a>See~\eqref{eq:variance} in Sect.~\ref{sec:variance} for ... </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</div>
+</section>
+<section id="recommended-prefixes-for-labels" class="slide level2">
+<h2>Recommended prefixes for labels</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>prefix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>equation</td>
+<td>eq</td>
+</tr>
+<tr class="even">
+<td>figure</td>
+<td>fig</td>
+</tr>
+<tr class="odd">
+<td>table</td>
+<td>tab</td>
+</tr>
+<tr class="even">
+<td>section</td>
+<td>sec</td>
+</tr>
+<tr class="odd">
+<td>subsection</td>
+<td>sub</td>
+</tr>
+<tr class="even">
+<td>sub-sub-section</td>
+<td>sss</td>
+</tr>
+<tr class="odd">
+<td>chapter</td>
+<td>chap</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="my-recommendation" class="slide level2">
+<h2>My recommendation</h2>
+<p>Use package <code>cleveref</code>. To write, e.g.&nbsp;“See Figure X”, use:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb28-1"><a href=""></a>See \cref{fig:boxplot}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>This way:</p>
+<ul>
+<li class="fragment"><p>you don’t forget unbreakable spaces;</p></li>
+<li class="fragment"><p>you ensure consistency among authors for the word <code>Figure</code> (i.e., Figure or figure, or Fig., or fig.)</p></li>
+<li class="fragment"><p><code>cleveref</code> does not require labels such as <code>fig:name</code>, or <code>sec:name</code>, but still recommended to increase readability.</p></li>
+</ul>
+</div>
+</section>
+<section id="cleveref-caveats" class="slide level2">
+<h2>Cleveref caveats</h2>
+<ul>
+<li class="fragment"><p>Remember to use <code>\Cref</code> instead of <code>\cref</code> at the beginning of a sentence.</p></li>
+<li class="fragment"><p>By default, <code>cleveref</code> prints “Eq. (3)” for an equation, but in various areas of maths, it is more common to simply put “(3)”. In that case, simply use <code>\eqref{eq:variance}</code> instead. If you do so, you may have to insert unbreakable spaces manually.</p></li>
+<li class="fragment"><p>Avoid starting a sentence with just an equation label: Equation (3) shows clearly that…</p></li>
+</ul>
+</section>
+<section id="hyperref" class="slide level2">
+<h2>Hyperref</h2>
+<p>PDF files may include hyper-links, like <a href="">this</a>. Every labelled item may become a hyper-link if you use package <code>hyperref</code>.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb29-1"><a href=""></a>\usepackage{hyperref}</span>
+<span id="cb29-2"><a href=""></a>\usepackage{cleveref} % must be loaded *after* hyperref, because reasons</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="more-on-unbreakable-spaces" class="slide level2">
+<h2>More on unbreakable spaces</h2>
+<p><code>cleveref</code> takes care of unbreakable spaces for numbered parts, e.g.&nbsp;Sect. 3, however you may need to insert unbreakable spaces manually in various other places:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb30-1"><a href=""></a>This problem is intractable in dimension~$d \geq 2$. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="other-types-of-spaces" class="slide level2">
+<h2>Other types of spaces</h2>
+<p>Whenever LaTeX encounters a dot, it inserts an <strong>inter-sentence</strong> (=big) space. This is problematic for abbreviations.</p>
+<ul>
+<li class="fragment"><strong>TIP</strong>:To deal with “i.e.” and “e.g.”, put a comma next to it: <em>an estimator such as, e.g., the MLE…</em>. No inter-sentence space, and stylistically better (apparently).</li>
+</ul>
+</section></section>
+<section>
+<section id="latex-algorithms" class="title-slide slide level1 center">
+<h1>LaTeX: Algorithms</h1>
+
+</section>
+<section id="popular-packages" class="slide level2">
+<h2>Popular packages</h2>
+<ol type="1">
+<li class="fragment"><p><a href="https://ctan.org/pkg/algpseudocodex">algpseudocodex</a>, most recent avatar of packages such as <code>algpseudocode</code>, <code>algorithmicx</code>, etc.</p></li>
+<li class="fragment"><p><a href="https://ctan.org/pkg/algorithm2e">algorithm2e</a></p></li>
+</ol>
+<div class="fragment">
+<p>I use the latter personally.</p>
+</div>
+</section></section>
+<section>
+<section id="latex-figures-and-images" class="title-slide slide level1 center">
+<h1>LaTeX: figures and images</h1>
+
+</section>
+<section id="in-one-slide" class="slide level2">
+<h2>In one slide</h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb31-1"><a href=""></a>\usepackage{graphicx}</span>
+<span id="cb31-2"><a href=""></a></span>
+<span id="cb31-3"><a href=""></a></span>
+<span id="cb31-4"><a href=""></a>\begin{figure} </span>
+<span id="cb31-5"><a href=""></a>  \begin{center}</span>
+<span id="cb31-6"><a href=""></a>    \includegraphics[scale=0.4]{figs/boxplot_first_method}</span>
+<span id="cb31-7"><a href=""></a>  \end{center}</span>
+<span id="cb31-8"><a href=""></a>  \caption{This is a nice boxplot.}</span>
+<span id="cb31-9"><a href=""></a>  \label{fig:boxplot_first}</span>
+<span id="cb31-10"><a href=""></a>\end{figure}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Important</strong>: <strong>ALWAYS PUT CAPTION FIRST, LABEL SECOND</strong>. See <a href="http://www.terminally-incoherent.com/blog/2007/04/14/latex-fixing-wrong-figure-numbers/">this</a> blog post.</p>
+</div>
+</section>
+<section id="figure-files" class="slide level2">
+<h2>Figure files</h2>
+<ul>
+<li class="fragment"><p>You can omit the file extension (pdf, png, …). This way, LaTeX will try to choose the right format.</p></li>
+<li class="fragment"><p>Spaces and multiple dots not allowed in file names.</p></li>
+</ul>
+</section>
+<section id="folder-for-figures" class="slide level2">
+<h2>Folder for figures</h2>
+<ul>
+<li class="fragment"><p>Good practice to put all figures in folder <code>figs/</code>. You can also use sub-folders (e.g., for chapters).</p></li>
+<li class="fragment"><p>It’s possible to specify the figure folder like this:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb32-1"><a href=""></a>\graphicspath{ {./figs/} } % path relative to main tex file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>but honestly, it’s equally easier to write <code>figs/...</code> in each <code>\includegraphics{}</code> command.</p></li>
+<li class="fragment"><p>don’t use absolute paths: will not work for your co-authors.</p></li>
+</ul>
+</section></section>
+<section>
+<section id="latex-misc" class="title-slide slide level1 center">
+<h1>LaTeX: misc</h1>
+
+</section>
+<section id="multi-file-documents" class="slide level2">
+<h2>Multi-file documents</h2>
+<p>You may want to split your document in multiple files:</p>
+<ul>
+<li class="fragment"><p>optional for papers (but useful, see git section)</p></li>
+<li class="fragment"><p>essential for PhD thesis.</p></li>
+</ul>
+<div class="fragment">
+<p>Use <code>\input{part.tex}</code> in your main file to include the contents of <code>part.tex</code>.</p>
+</div>
+<div class="fragment">
+<p>Note: LaTeX has also another command, <code>\include{}</code> which does almost the same thing, but it also adds a page break.</p>
+</div>
+</section>
+<section id="documents-in-french-or-other-languages" class="slide level2">
+<h2>Documents in French (or other languages)</h2>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb33-1"><a href=""></a>\usepackage[french]{babel}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>will adapt the typography, and translate words such as abstract, chapter, etc.</p>
+<ul>
+<li class="fragment">guillemets: <code>\og{} text \fg{}</code></li>
+</ul>
+</section>
+<section id="documents-mixing-several-languages-your-phd-thesis" class="slide level2">
+<h2>Documents mixing several languages (your PhD thesis)</h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb34-1"><a href=""></a>\usepackage[french, english]{babel}</span>
+<span id="cb34-2"><a href=""></a>...</span>
+<span id="cb34-3"><a href=""></a></span>
+<span id="cb34-4"><a href=""></a>Yo, what's up? </span>
+<span id="cb34-5"><a href=""></a></span>
+<span id="cb34-6"><a href=""></a>\selectlanguage{french}</span>
+<span id="cb34-7"><a href=""></a>Wesh!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="bibliography-bibtex-and-friends" class="title-slide slide level1 center">
+<h1>Bibliography: bibtex and friends</h1>
+
+</section>
+<section id="bibtex-entries" class="slide level2">
+<h2>Bibtex entries</h2>
+<p>To cite papers, you need to create a <code>*.bib</code> file, which contains entries such as:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb35-1"><a href=""></a>@book{book_sasha,</span>
+<span id="cb35-2"><a href=""></a>    AUTHOR = {Tsybakov, Alexandre B.},</span>
+<span id="cb35-3"><a href=""></a>     TITLE = {Introduction to nonparametric estimation},</span>
+<span id="cb35-4"><a href=""></a>    SERIES = {Springer Series in Statistics},</span>
+<span id="cb35-5"><a href=""></a>      YEAR = {2009},</span>
+<span id="cb35-6"><a href=""></a>       DOI = {10.1007/b13794},</span>
+<span id="cb35-7"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>The entry name is yours to choose.</p>
+</div>
+<div class="fragment">
+<p>Most important entry types: <code>book</code>, <code>article</code>, <code>inproceedings</code>.</p>
+</div>
+</section>
+<section id="bibtex-quirks" class="slide level2">
+<h2>Bibtex quirks</h2>
+<ul>
+<li class="fragment"><p>understands only ASCII. You must input accents like this: <code>\'e</code>, <code>\^e</code> <code>\"a</code>, etc.</p></li>
+<li class="fragment"><p>Caps in titles must be “protected”. Very annoying!</p></li>
+</ul>
+<div class="fragment">
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb36-1"><a href=""></a>@article {MR4277333,</span>
+<span id="cb36-2"><a href=""></a>    AUTHOR = {Leluc, R\'emi and Portier, Fran\c cois and Segers, Johan},</span>
+<span id="cb36-3"><a href=""></a>     TITLE = {Control variate selection for {M}onte {C}arlo integration},</span>
+<span id="cb36-4"><a href=""></a>   JOURNAL = {Stat. Comput.},</span>
+<span id="cb36-5"><a href=""></a>  FJOURNAL = {Statistics and Computing},</span>
+<span id="cb36-6"><a href=""></a>    VOLUME = {31},</span>
+<span id="cb36-7"><a href=""></a>      YEAR = {2021},</span>
+<span id="cb36-8"><a href=""></a>    NUMBER = {4},</span>
+<span id="cb36-9"><a href=""></a>     PAGES = {Paper No. 50, 27},</span>
+<span id="cb36-10"><a href=""></a>      ISSN = {0960-3174,1573-1375},</span>
+<span id="cb36-11"><a href=""></a>   MRCLASS = {62J07 (65C05)},</span>
+<span id="cb36-12"><a href=""></a>  MRNUMBER = {4277333},</span>
+<span id="cb36-13"><a href=""></a>       DOI = {10.1007/s11222-021-10011-z},</span>
+<span id="cb36-14"><a href=""></a>       URL = {https://doi.org/10.1007/s11222-021-10011-z},</span>
+<span id="cb36-15"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bibtex-databases" class="slide level2">
+<h2>Bibtex databases</h2>
+<p>Q: what is a good source for bibtex entries?</p>
+<div class="fragment">
+<ol type="1">
+<li class="fragment"><p><a href="https://mathscinet.ams.org/">MathSciNet</a> (very clean, only Math)</p></li>
+<li class="fragment"><p><a href="https://zbmath.org/">Zbmath</a> (does not require a subscription, almost as good as MathSciNet)</p></li>
+<li class="fragment"><p><a href="https://arxiv.org">arxiv</a> (well, for papers only on arxiv)</p></li>
+<li class="fragment"><p><a href="https://www.crossref.org">CrossRef</a> (all fields of science)</p></li>
+</ol>
+</div>
+<div class="fragment">
+<p>Avoid Google Scholar (low quality: missing accents, no DOI, etc.) or, worse, Semantic Scholar</p>
+</div>
+</section>
+<section id="author-year-citations" class="slide level2">
+<h2>Author-year citations</h2>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb37-1"><a href=""></a>\usepackage[authoryear]{natbib}</span>
+<span id="cb37-2"><a href=""></a>\bibliographystyle{apalike} % see natbib doc for other styles</span>
+<span id="cb37-3"><a href=""></a></span>
+<span id="cb37-4"><a href=""></a>. . . </span>
+<span id="cb37-5"><a href=""></a></span>
+<span id="cb37-6"><a href=""></a>% where you want to insert the bibliography</span>
+<span id="cb37-7"><a href=""></a>\bibliography{./bib/my_biblio} % relative path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li class="fragment"><p>narrative citation: <code>\citet{key}</code>. Tsybakov (2002) proved that …</p></li>
+<li class="fragment"><p>parenthetical citation: <code>\citep{key}</code>. Such estimators are consistent (Tsybakov, 2002).</p></li>
+</ul>
+</section>
+<section id="numeric-citations" class="slide level2">
+<h2>Numeric citations</h2>
+<p>Simply replace option <code>optionyear</code> by <code>numbers</code>; add <code>square</code> if you want citations like this: [3].</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb38-1"><a href=""></a>\usepackage[numbers, square]{natbib}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>You can still use <code>\citet</code> and <code>\citep</code>:</p>
+<ul>
+<li class="fragment"><p>narrative citation: <code>\citet{key}</code>. Tsybakov [1] proved that …</p></li>
+<li class="fragment"><p>parenthetical citation: <code>\citep{key}</code>. Such estimators are consistent [1].</p></li>
+</ul>
+</div>
+</section>
+<section id="bibliography-tools" class="slide level2">
+<h2>Bibliography tools</h2>
+<p>It is ok to keep adding references to the same bibtex over the years. When it gets big, you may want to manage it through some dedicated <strong>database</strong> tool, such as <a href="https://www.jabref.org">jabref</a>.</p>
+<div class="fragment">
+<p>Jabref treats your bibtex file as a reference database. A different approach is to use a tool to manage your collection of papers, from which you can then extract a bibtex file; see for instance <a href="https://www.zotero.org/">zotero</a>.</p>
+</div>
+</section>
+<section id="a-more-modern-version-of-bibtex-natbib" class="slide level2">
+<h2>A more modern version of bibtex / natbib</h2>
+<p>The combo bibtex (the program) + natbib (the package) may be replaced by <a href="https://ctan.org/pkg/biber">biber</a> + <a href="https://ctan.org/pkg/biblatex">biblatex</a>.</p>
+<p>Pros:</p>
+<ul>
+<li class="fragment"><p>unicode (UTF-8) support</p></li>
+<li class="fragment"><p>better sorting control</p></li>
+<li class="fragment"><p>many other features</p></li>
+</ul>
+<div class="fragment">
+<p>Cons:</p>
+<ul>
+<li class="fragment">most journals still use bibtex + natbib</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Personally, I use it only for my CV.</p>
+</div>
+</section></section>
+<section>
+<section id="cli-tools-you-should-know" class="title-slide slide level1 center">
+<h1>CLI Tools you should know</h1>
+
+</section>
+<section id="compiling-latex-into-a-pdf" class="slide level2">
+<h2>Compiling LaTeX (into a pdf)</h2>
+<p>Problem: to compile a LaTeX file with a bibliography, you are supposed to do:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb39-1"><a href=""></a>pdflatex main.tex</span>
+<span id="cb39-2"><a href=""></a>pdflatex main.tex</span>
+<span id="cb39-3"><a href=""></a>bibtex main</span>
+<span id="cb39-4"><a href=""></a>pdflatex main.tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Add a few more lines if you generate a glossary, a TOC, …</p>
+</div>
+</section>
+<section id="solution-latexmk" class="slide level2">
+<h2>Solution: latexmk</h2>
+<p><code>latexmk</code> is a Perl script that runs LaTeX (and friends) the correct number of times. Simply run:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb40-1"><a href=""></a>latexmk main.tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>You can also use it to clean intermediary files (useful before a git commit):</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb41-1"><a href=""></a>latexmk -c main.tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p><code>latexmk</code> should already be available in your LaTeX distribution. By the way, when you click “compile” on Overleaf, it runs <code>latexmk</code>.</p>
+</div>
+</section>
+<section id="latexdiff-to-compare-two-versions-of-your-paper" class="slide level2">
+<h2>latexdiff to compare two versions of your paper</h2>
+<p>In other words, you want to <strong>diff</strong> the two files.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb42-1"><a href=""></a>latexdiff old.tex new.tex &gt; diff.tex</span>
+<span id="cb42-2"><a href=""></a>latexmk diff.tex  # create the PDF showing the changes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="figs/latexdiff.png" class="quarto-figure quarto-figure-right r-stretch"></section>
+<section id="a-nice-use-case-for-latexdiff" class="slide level2">
+<h2>A nice use case for <code>latexdiff</code></h2>
+<p>Some authors submit the diff file during the revision process, to help referees to spot more easily how the paper was updated.</p>
+</section></section>
+<section>
+<section id="latex-and-git" class="title-slide slide level1 center">
+<h1>LaTeX and git</h1>
+
+</section>
+<section id="recommendations" class="slide level2">
+<h2>Recommendations</h2>
+<ul>
+<li class="fragment"><p>Only track <strong>source</strong> files (<code>*.tex</code>, <code>*.bib</code>, figures, etc.). Managing conflicts between output (<code>main.pdf</code>) or intermediary files (<code>main.log</code>, <code>main.aux</code>) is a pain.</p></li>
+<li class="fragment"><p>avoid working on the same file simultaneously if you are not comfortable with managing git conflicts. Good case for splitting the paper into multiple files (e.g., a file per section).</p></li>
+<li class="fragment"><p>use <code>.gitignore</code> to tell git to ignore intermediary files. (For pdf, make sure you don’t ignore your figs). I will send you a link to a template repo with a properly set <code>.gitignore</code> file.</p></li>
+</ul>
+</section></section>
+<section>
+<section id="other-types-of-documents" class="title-slide slide level1 center">
+<h1>Other types of documents</h1>
+
+</section>
+<section id="slides" class="slide level2">
+<h2>slides</h2>
+<p>The standard class to generate slides in LaTeX is <a href="https://ctan.org/pkg/beamer">beamer</a>.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb43-1"><a href=""></a>\documentclass{beamer}</span>
+<span id="cb43-2"><a href=""></a>\title{My talk}</span>
+<span id="cb43-3"><a href=""></a>\author{My name}</span>
+<span id="cb43-4"><a href=""></a>\institute{University of Oxbridge}</span>
+<span id="cb43-5"><a href=""></a></span>
+<span id="cb43-6"><a href=""></a>\begin{document}</span>
+<span id="cb43-7"><a href=""></a></span>
+<span id="cb43-8"><a href=""></a>\frame{\titlepage}</span>
+<span id="cb43-9"><a href=""></a></span>
+<span id="cb43-10"><a href=""></a>\begin{frame}\frametitle{Title of first slide}</span>
+<span id="cb43-11"><a href=""></a>  \begin{itemize}</span>
+<span id="cb43-12"><a href=""></a>    \item First point</span>
+<span id="cb43-13"><a href=""></a>    \item Second point</span>
+<span id="cb43-14"><a href=""></a>  \end{itemize}</span>
+<span id="cb43-15"><a href=""></a>\end{frame}</span>
+<span id="cb43-16"><a href=""></a></span>
+<span id="cb43-17"><a href=""></a>\end{document}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="use-quarto-instead" class="slide level2">
+<h2>Use Quarto instead</h2>
+<p>The verbosity of LaTeX + beamer is really a pain, I strongly recommend you use <a href="">quarto</a> instead:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource {markdown} number-lines code-with-copy"><code class="sourceCode"><span id="cb44-1"><a href=""></a>---</span>
+<span id="cb44-2"><a href=""></a>title: My talk</span>
+<span id="cb44-3"><a href=""></a>author: My name</span>
+<span id="cb44-4"><a href=""></a>institute: University of Oxbridge</span>
+<span id="cb44-5"><a href=""></a>---</span>
+<span id="cb44-6"><a href=""></a></span>
+<span id="cb44-7"><a href=""></a># First slide</span>
+<span id="cb44-8"><a href=""></a></span>
+<span id="cb44-9"><a href=""></a>* first point</span>
+<span id="cb44-10"><a href=""></a></span>
+<span id="cb44-11"><a href=""></a>* second point</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Note that quarto can generate both PDF slides (using beamer) and HTML slides (using revealjs). You are looking at quarto-generated slides, btw!</p>
+</div>
+</section>
+<section id="cv" class="slide level2">
+<h2>CV</h2>
+<p>see <a href="https://ctan.org/pkg/moderncv">moderncv</a> or similar packages.</p>
+</section></section>
+<section>
+<section id="conclusion-final-recommendations" class="title-slide slide level1 center">
+<h1>Conclusion, final recommendations</h1>
+
+</section>
+<section id="sane-preamble" class="slide level2">
+<h2>Sane preamble</h2>
+<ul>
+<li class="fragment"><p>as small as possible (package conflicts are not fun)</p></li>
+<li class="fragment"><p>you should understand each line</p></li>
+<li class="fragment"><p>semantic macros</p></li>
+</ul>
+<div class="fragment">
+<p>I will send you a template which uses only the essential packages we have already discussed.</p>
+</div>
+</section>
+<section id="what-to-do-next" class="slide level2">
+<h2>What to do next?</h2>
+<ul>
+<li class="fragment"><p>register on <a href="https://orcid.org/">ORCID</a></p></li>
+<li class="fragment"><p>volunteer to submit your next collaborative paper on <a href="https://arxiv.org">arxiv</a></p></li>
+<li class="fragment"><p>Start reading the references given in the next slide</p></li>
+<li class="fragment"><p>Look into jabref, zotero, latexdiff, etc.</p></li>
+<li class="fragment"><p>When looking for on-line help, try first <a href="https://tex.stackexchange.com">tex stackexchange</a>.</p></li>
+</ul>
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
+<ul>
+<li class="fragment"><p>Excellent on-line book on LaTeX on <a href="https://en.wikibooks.org/wiki/LaTeX">wikibooks</a></p></li>
+<li class="fragment"><p>package documentation on <a href="https://ctan.org">CTAN</a>; e.g.&nbsp;<a href="https://ctan.org/pkg/natbib">natbib</a></p></li>
+<li class="fragment"><p><a href="https://ctan.org/pkg/l2tabu-english">l2tabu</a>, or the French version: <a href="https://ctan.org/pkg/l2tabu-french">l2tabu-french</a></p></li>
+<li class="fragment"><p>Nice cheatsheet <a href="https://c-tan.com/download/latex_math_cheatsheet_2018-01-13.pdf">here</a>.</p></li>
+</ul>
+</section>
+<section id="book" class="slide level2">
+<h2>Book</h2>
+
+
+<img data-src="figs/cover_more_math_into_latex.jpg" class="r-stretch"></section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="slides_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="slides_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

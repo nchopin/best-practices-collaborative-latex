@@ -1,0 +1,65 @@
+\documentclass{amsart}
+
+% PACKAGES
+%%%%%%%%%%
+
+% Essential 
+\usepackage[utf8]{inputenc} % encoding 
+\usepackage[T1]{fontenc} % also needed for accents, etc. 
+\usepackage{amsmath, amssymb, amsthm, amsfonts} % absolute essential for math
+\usepackage{mathtools} % extends amsmath, add coloneqq for :=
+\usepackage{graphicx} % figures
+\usepackage[authoryear]{natbib} % bibliography (author-year style for citations)
+
+% Often useful
+\usepackage{cleverref} % *before* hyperref
+\usepackage{hyperref} % hyper-links 
+\usepackage{dsfont} % mathds{1} for indicator (part of doublestroke package)
+\usepackage{algorithm2e} % algorithms
+
+% revision process
+\usepackage{todonotes} % as the name suggests
+
+% Books / thesis
+\usepackage{glossaries} % as the name suggests
+\usepackage{geometry}  % or use e.g. KOMA style
+% babel TODO
+
+% MACROS
+%%%%%%%%
+
+% TODO
+
+\begin{document}
+
+\begin{abstract}
+  This is the abstract. Usually no math here (in doubt, check the journal
+  guidelines.)
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+A gentle introduction to stuff.
+
+\section{Theory}%
+\label{sec:Theory}
+
+A very important equation:
+\[ \int_0^{2\pi} \sin(x) dx = 0. \]
+
+Recall that:
+\begin{itemize}
+  \item No blank line \emph{before} an equation. 
+  \item Function $\sin$ is a math operator, TODO.
+\end{itemize}
+
+A multi-line equation:
+\begin{align}
+  \label{eq:}
+  f(x) = 
+  
+\end{align}
+
+
+\end{document}
+
