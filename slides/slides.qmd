@@ -1032,8 +1032,8 @@ help referees to spot more easily how the paper was updated.
   (e.g., a file per section).
 
 * use `.gitignore` to tell git to ignore intermediary files. (For pdf, make
-  sure you don't ignore your figs). I will send you a link to a template repo
-  with a properly set `.gitignore` file.
+  sure you don't ignore your figs). The github repo of this course contains 
+  a `.gitignore` you can adapt to your needs.
 
 # Other types of documents
 
@@ -1119,7 +1119,11 @@ already discussed.
 
 ## References
 
-* Excellent on-line book on LaTeX on [wikibooks](https://en.wikibooks.org/wiki/LaTeX)
+* Github repository for this course is [here](https://github.com/nchopin/best-practices-collaborative-latex);
+  contains theses slides, a template paper, a `.gitignore` file you can re-use,
+  etc.
+
+* wikibooks has an excellent on-line book on LaTeX [here](https://en.wikibooks.org/wiki/LaTeX)
 
 * package documentation on [CTAN](https://ctan.org);
   e.g. [natbib](https://ctan.org/pkg/natbib)
@@ -1129,7 +1133,7 @@ already discussed.
 
 * Nice cheatsheet [here](https://c-tan.com/download/latex_math_cheatsheet_2018-01-13.pdf).
 
-## Book
+## Only existing book on LaTeX for math
 
 ![](figs/cover_more_math_into_latex.jpg)
 
