@@ -6,7 +6,10 @@
 <script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="slides_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="slides_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="slides_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.32">
 
   <meta name="author" content="Nicolas Chopin">
@@ -453,8 +456,8 @@ Nicolas Chopin
 </section>
 <section id="what-is-going-on" class="slide level2">
 <h2>What is going on?</h2>
-
-<img data-src="figs/bad_encoding.png" style="width:60.0%" class="r-stretch"></section>
+<p><a href="figs/bad_encoding.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="figs/bad_encoding.png" style="width:60.0%"></a></p>
+</section>
 <section id="text-files-and-encodings" class="slide level2">
 <h2>Text files and encodings</h2>
 <p>LaTeX source files are <strong>text files</strong>, with no meta-data, in particular no specification of which <strong>encoding</strong> you use.</p>
@@ -468,12 +471,16 @@ Nicolas Chopin
 </section>
 <section id="ascii-table" class="slide level2">
 <h2>ASCII table</h2>
-
-<img data-src="figs/ascii_table.png" style="width:70.0%" class="r-stretch"></section>
+<p><a href="figs/ascii_table.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="figs/ascii_table.png" style="width:70.0%"></a></p>
+</section>
 <section id="rise-of-utf-8" class="slide level2">
 <h2>Rise of UTF-8</h2>
-
-<img data-src="figs/rise_of_utf8.png" class="quarto-figure quarto-figure-right r-stretch"></section>
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><a href="figs/rise_of_utf8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="figs/rise_of_utf8.png" class="quarto-figure quarto-figure-right"></a></p>
+</figure>
+</div>
+</section>
 <section id="encoding-in-practice-in-latex" class="slide level2">
 <h2>Encoding in practice in latex</h2>
 <p>Make sure that:</p>
@@ -601,19 +608,45 @@ Nicolas Chopin
 <li class="fragment">1994: release of LaTeX-<span class="math inline">\(2\varepsilon\)</span>, the <em>current</em> version.</li>
 </ul>
 </section>
-<section id="practical-consequences" class="slide level2">
-<h2>Practical consequences</h2>
-<ul>
-<li class="fragment"><p>Avoid tex directives in LaTeX, they are too <strong>low-level</strong>. (We will give examples later.)</p></li>
-<li class="fragment"><p>LaTeX is pretty old. It stood the test of times, but it has also its quirks:</p>
+<section id="latex-was-a-game-changer-for-scientists" class="slide level2">
+<h2>(La)TeX was a game changer for scientists</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="figs/Korostelev_Tsybakov93.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Korostelëv and Tsybakov, 1993"><img data-src="figs/Korostelev_Tsybakov93.svg" style="width:65.0%" alt="Korostelëv and Tsybakov, 1993"></a></p>
+<figcaption>Korostelëv and Tsybakov, 1993</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="figs/Tsybakov2009.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Tsybakov, 2009"><img data-src="figs/Tsybakov2009.svg" style="width:65.0%" alt="Tsybakov, 2009"></a></p>
+<figcaption>Tsybakov, 2009</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="where-latex-shows-its-age" class="slide level2">
+<h2>Where LaTeX shows its age</h2>
 <ul>
 <li class="fragment"><p>designed before UTF-8 was a thing (see above)</p></li>
 <li class="fragment"><p>very verbose</p></li>
 <li class="fragment"><p>debugging is <strong>not fun</strong>: error messages are <strong>cryptic</strong>, and even when it runs without error messages, it may be hard to understand why you did get the desired result.</p></li>
-</ul></li>
 </ul>
 <div class="fragment">
-<p><strong>Recommendation</strong>: compile very often, to catch errors early.</p>
+<p><strong>Recommendations</strong>:</p>
+<ul>
+<li class="fragment"><p>compile very often, to catch errors early.</p></li>
+<li class="fragment"><p>avoid TeX (low-level) commands, see later for examples.</p></li>
+</ul>
 </div>
 </section>
 <section id="main-concept-behind-tex-latex" class="slide level2">
@@ -624,8 +657,8 @@ Nicolas Chopin
 <p>Even then, you should not spend too much time on it. This will be taken care by the journal at the end of the line.</p>
 </div>
 </section>
-<section id="latex-commands" class="slide level2">
-<h2>LaTeX commands</h2>
+<section id="latex-executables" class="slide level2">
+<h2>LaTeX executables</h2>
 <p>When we say LaTeX, we mean both:</p>
 <ol type="1">
 <li class="fragment"><p>The language</p></li>
@@ -1152,12 +1185,13 @@ Nicolas Chopin
 <ol type="1">
 <li class="fragment"><p><a href="https://mathscinet.ams.org/">MathSciNet</a> (very clean, only Math)</p></li>
 <li class="fragment"><p><a href="https://zbmath.org/">Zbmath</a> (does not require a subscription, almost as good as MathSciNet)</p></li>
+<li class="fragment"><p><a href="https://dblp.org/">dblp</a>: CS (and therefore machine learning)</p></li>
+<li class="fragment"><p><a href="https://www.crossref.org">CrossRef</a> (not as good, but all fields of science)</p></li>
 <li class="fragment"><p><a href="https://arxiv.org">arxiv</a> (well, for papers only on arxiv)</p></li>
-<li class="fragment"><p><a href="https://www.crossref.org">CrossRef</a> (all fields of science)</p></li>
 </ol>
 </div>
 <div class="fragment">
-<p>Avoid Google Scholar (low quality: missing accents, no DOI, etc.) or, worse, Semantic Scholar</p>
+<p>Avoid Google Scholar or Semantic Scholar (low quality: missing accents, unprotected caps, no DOI, etc.)</p>
 </div>
 </section>
 <section id="author-year-citations" class="slide level2">
@@ -1245,8 +1279,12 @@ Nicolas Chopin
 <p>In other words, you want to <strong>diff</strong> the two files.</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb42-1"><a href=""></a>latexdiff old.tex new.tex &gt; diff.tex</span>
 <span id="cb42-2"><a href=""></a>latexmk diff.tex  # create the PDF showing the changes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-<img data-src="figs/latexdiff.png" class="quarto-figure quarto-figure-right r-stretch"></section>
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><a href="figs/latexdiff.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="figs/latexdiff.png" class="quarto-figure quarto-figure-right"></a></p>
+</figure>
+</div>
+</section>
 <section id="a-nice-use-case-for-latexdiff" class="slide level2">
 <h2>A nice use case for <code>latexdiff</code></h2>
 <p>Some authors submit the diff file during the revision process, to help referees to spot more easily how the paper was updated.</p>
@@ -1350,9 +1388,9 @@ Nicolas Chopin
 </section>
 <section id="only-existing-book-on-latex-for-math" class="slide level2">
 <h2>Only existing book on LaTeX for math</h2>
+<p><a href="figs/cover_more_math_into_latex.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="figs/cover_more_math_into_latex.jpg"></a></p>
 
-
-<img data-src="figs/cover_more_math_into_latex.jpg" class="r-stretch"></section></section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -1755,6 +1793,38 @@ Nicolas Chopin
       }
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

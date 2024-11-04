@@ -16,6 +16,7 @@ format:
     theme: solarized
     incremental: true
     slide-level: 2
+    lightbox: true
 ---
 
 # Introduction
@@ -261,25 +262,32 @@ write:
 
 * 1994: release of LaTeX-$2\varepsilon$, the *current* version.
 
+## (La)TeX was a game changer for scientists
 
-## Practical consequences
+::: {layout-ncol=2}
+![Korostelëv and Tsybakov, 1993](figs/Korostelev_Tsybakov93.svg){width=65%}
 
-* Avoid tex directives in LaTeX, they are too **low-level**. (We will give
-  examples later.)
+![Tsybakov, 2009](figs/Tsybakov2009.svg){width=65%}
+:::
 
 
-* LaTeX is pretty old. It stood the test of times, but it has also its quirks:
-  + designed before UTF-8 was a thing (see above)
+## Where LaTeX shows its age
 
-  + very verbose
+* designed before UTF-8 was a thing (see above)
 
-  + debugging is **not fun**: error messages are **cryptic**, and even when it
-    runs without error messages, it may be hard to understand why you did get
-    the desired result. 
+* very verbose
+
+* debugging is **not fun**: error messages are **cryptic**, and even when it
+  runs without error messages, it may be hard to understand why you did get
+  the desired result. 
 
 . . .
 
-**Recommendation**: compile very often, to catch errors early.
+**Recommendations**: 
+
+* compile very often, to catch errors early.
+
+* avoid TeX (low-level) commands, see later for examples.
 
 ## Main concept behind TeX / LaTeX
 
@@ -293,7 +301,7 @@ process.
 Even then, you should not spend too much time on it. This will be taken care by
 the journal at the end of the line. 
 
-## LaTeX commands
+## LaTeX executables
 
 When we say LaTeX, we mean both:
 
@@ -887,13 +895,16 @@ Q: what is a good source for bibtex entries?
 
 2. [Zbmath](https://zbmath.org/) (does not require a subscription, almost as good as MathSciNet)
 
-3. [arxiv](https://arxiv.org) (well, for papers only on arxiv)
+3. [dblp](https://dblp.org/): CS (and therefore machine learning)
 
-4. [CrossRef](https://www.crossref.org) (all fields of science)
+4. [CrossRef](https://www.crossref.org) (not as good, but all fields of science)
+
+5. [arxiv](https://arxiv.org) (well, for papers only on arxiv)
 
 . . .
 
-Avoid Google Scholar (low quality: missing accents, no DOI, etc.) or, worse, Semantic Scholar
+Avoid Google Scholar or Semantic Scholar (low quality: missing accents, unprotected caps,
+no DOI, etc.)
 
 ## Author-year citations
 
