@@ -539,10 +539,9 @@ There is a `proof` environment: use it.
 To write text in equations, use... `\text`:
 ```{latex}
 \[
-   x^2 > 0, \text{for all} x >0
+   x^2 > 0, \text{for all} x > 0
 \]
 ```
-
 
 ## Integrals
 
@@ -784,6 +783,27 @@ To specify the location of the figure:
 But again, worry about this only at the end of the writing process. (And the
 journal will typically deal with figures in its own way.)
 
+## Several images in the same figure
+
+**Simple approach** (works best if images have the same size): 
+```{latex}
+\begin{figure} 
+  \begin{center}
+    \includegraphics[scale=0.3]{figs/first_hist}
+    \includegraphics[scale=0.3]{figs/second_hist} \\  % 2 images per row
+    \includegraphics[scale=0.3]{figs/third_hist}
+    \includegraphics[scale=0.3]{figs/fourth_hist}
+  \end{center}
+  \caption{Four cool histograms (2x2 layout)}
+  \label{fig:boxplot_first}
+\end{figure}
+```
+. . .
+
+**More advanced**: sub-figures (package
+[subcaption](https://ctan.org/pkg/subcaption)): You get a sub-caption for each
+sub-figure, on top of the overall caption.
+
 ## Figure files
 
 * You can omit the file extension (pdf, png, ...). This way, LaTeX will try to
@@ -813,7 +833,7 @@ You may want to split your document in multiple files:
 
 * optional for papers (but useful, see git section)
 
-* essential for PhD thesis. 
+* essential for PhD theses. 
 
 . . .
 

@@ -618,7 +618,7 @@ Nicolas Chopin
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="figs/Korostelev_Tsybakov93.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Korostelëv and Tsybakov, 1993"><img data-src="figs/Korostelev_Tsybakov93.svg" style="width:65.0%" alt="Korostelëv and Tsybakov, 1993"></a></p>
+<p><a href="figs/Korostelev_Tsybakov93.pdf" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Korostelëv and Tsybakov, 1993"><embed data-src="figs/Korostelev_Tsybakov93.pdf" style="width:65.0%"></a></p>
 <figcaption>Korostelëv and Tsybakov, 1993</figcaption>
 </figure>
 </div>
@@ -626,7 +626,7 @@ Nicolas Chopin
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="figs/Tsybakov2009.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Tsybakov, 2009"><img data-src="figs/Tsybakov2009.svg" style="width:65.0%" alt="Tsybakov, 2009"></a></p>
+<p><a href="figs/Tsybakov2009.pdf" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Tsybakov, 2009"><embed data-src="figs/Tsybakov2009.pdf" style="width:65.0%"></a></p>
 <figcaption>Tsybakov, 2009</figcaption>
 </figure>
 </div>
@@ -829,7 +829,7 @@ Nicolas Chopin
 <h2>Text in equations</h2>
 <p>To write text in equations, use… <code>\text</code>:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href=""></a>\[</span>
-<span id="cb18-2"><a href=""></a>   x^2 &gt; 0, \text{for all} x &gt;0</span>
+<span id="cb18-2"><a href=""></a>   x^2 &gt; 0, \text{for all} x &gt; 0</span>
 <span id="cb18-3"><a href=""></a>\]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="integrals" class="slide level2">
@@ -1088,6 +1088,23 @@ Nicolas Chopin
 <p>But again, worry about this only at the end of the writing process. (And the journal will typically deal with figures in its own way.)</p>
 </div>
 </section>
+<section id="several-images-in-the-same-figure" class="slide level2">
+<h2>Several images in the same figure</h2>
+<p><strong>Simple approach</strong> (works best if images have the same size):</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb33-1"><a href=""></a>\begin{figure} </span>
+<span id="cb33-2"><a href=""></a>  \begin{center}</span>
+<span id="cb33-3"><a href=""></a>    \includegraphics[scale=0.3]{figs/first_hist}</span>
+<span id="cb33-4"><a href=""></a>    \includegraphics[scale=0.3]{figs/second_hist} \\  % 2 images per row</span>
+<span id="cb33-5"><a href=""></a>    \includegraphics[scale=0.3]{figs/third_hist}</span>
+<span id="cb33-6"><a href=""></a>    \includegraphics[scale=0.3]{figs/fourth_hist}</span>
+<span id="cb33-7"><a href=""></a>  \end{center}</span>
+<span id="cb33-8"><a href=""></a>  \caption{Four cool histograms (2x2 layout)}</span>
+<span id="cb33-9"><a href=""></a>  \label{fig:boxplot_first}</span>
+<span id="cb33-10"><a href=""></a>\end{figure}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>More advanced</strong>: sub-figures (package <a href="https://ctan.org/pkg/subcaption">subcaption</a>): You get a sub-caption for each sub-figure, on top of the overall caption.</p>
+</div>
+</section>
 <section id="figure-files" class="slide level2">
 <h2>Figure files</h2>
 <ul>
@@ -1100,7 +1117,7 @@ Nicolas Chopin
 <ul>
 <li class="fragment"><p>Good practice to put all figures in folder <code>figs/</code>. You can also use sub-folders (e.g., for chapters).</p></li>
 <li class="fragment"><p>It’s possible to specify the figure folder like this:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb33-1"><a href=""></a>\graphicspath{ {./figs/} } % path relative to main tex file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb34-1"><a href=""></a>\graphicspath{ {./figs/} } % path relative to main tex file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>but honestly, it’s equally easier to write <code>figs/...</code> in each <code>\includegraphics{}</code> command.</p></li>
 <li class="fragment"><p>don’t use absolute paths: will not work for your co-authors.</p></li>
 </ul>
@@ -1115,7 +1132,7 @@ Nicolas Chopin
 <p>You may want to split your document in multiple files:</p>
 <ul>
 <li class="fragment"><p>optional for papers (but useful, see git section)</p></li>
-<li class="fragment"><p>essential for PhD thesis.</p></li>
+<li class="fragment"><p>essential for PhD theses.</p></li>
 </ul>
 <div class="fragment">
 <p>Use <code>\input{part.tex}</code> in your main file to include the contents of <code>part.tex</code>.</p>
@@ -1126,7 +1143,7 @@ Nicolas Chopin
 </section>
 <section id="documents-in-french-or-other-languages" class="slide level2">
 <h2>Documents in French (or other languages)</h2>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb34-1"><a href=""></a>\usepackage[french]{babel}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb35-1"><a href=""></a>\usepackage[french]{babel}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>will adapt the typography, and translate words such as abstract, chapter, etc.</p>
 <ul>
 <li class="fragment">guillemets: <code>\og{} text \fg{}</code></li>
@@ -1134,13 +1151,13 @@ Nicolas Chopin
 </section>
 <section id="documents-mixing-several-languages-your-phd-thesis" class="slide level2">
 <h2>Documents mixing several languages (your PhD thesis)</h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb35-1"><a href=""></a>\usepackage[french, english]{babel}</span>
-<span id="cb35-2"><a href=""></a>...</span>
-<span id="cb35-3"><a href=""></a></span>
-<span id="cb35-4"><a href=""></a>Yo, what's up? </span>
-<span id="cb35-5"><a href=""></a></span>
-<span id="cb35-6"><a href=""></a>\selectlanguage{french}</span>
-<span id="cb35-7"><a href=""></a>Wesh!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb36-1"><a href=""></a>\usepackage[french, english]{babel}</span>
+<span id="cb36-2"><a href=""></a>...</span>
+<span id="cb36-3"><a href=""></a></span>
+<span id="cb36-4"><a href=""></a>Yo, what's up? </span>
+<span id="cb36-5"><a href=""></a></span>
+<span id="cb36-6"><a href=""></a>\selectlanguage{french}</span>
+<span id="cb36-7"><a href=""></a>Wesh!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="bibliography-bibtex-and-friends" class="title-slide slide level1 center">
@@ -1150,13 +1167,13 @@ Nicolas Chopin
 <section id="bibtex-entries" class="slide level2">
 <h2>Bibtex entries</h2>
 <p>To cite papers, you need to create a <code>*.bib</code> file, which contains entries such as:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb36-1"><a href=""></a>@book{book_sasha,</span>
-<span id="cb36-2"><a href=""></a>    AUTHOR = {Tsybakov, Alexandre B.},</span>
-<span id="cb36-3"><a href=""></a>     TITLE = {Introduction to nonparametric estimation},</span>
-<span id="cb36-4"><a href=""></a>    SERIES = {Springer Series in Statistics},</span>
-<span id="cb36-5"><a href=""></a>      YEAR = {2009},</span>
-<span id="cb36-6"><a href=""></a>       DOI = {10.1007/b13794},</span>
-<span id="cb36-7"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb37-1"><a href=""></a>@book{book_sasha,</span>
+<span id="cb37-2"><a href=""></a>    AUTHOR = {Tsybakov, Alexandre B.},</span>
+<span id="cb37-3"><a href=""></a>     TITLE = {Introduction to nonparametric estimation},</span>
+<span id="cb37-4"><a href=""></a>    SERIES = {Springer Series in Statistics},</span>
+<span id="cb37-5"><a href=""></a>      YEAR = {2009},</span>
+<span id="cb37-6"><a href=""></a>       DOI = {10.1007/b13794},</span>
+<span id="cb37-7"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>The entry name is yours to choose.</p>
 </div>
@@ -1171,21 +1188,21 @@ Nicolas Chopin
 <li class="fragment"><p>Caps in titles must be “protected”. Very annoying!</p></li>
 </ul>
 <div class="fragment">
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb37-1"><a href=""></a>@article {MR4277333,</span>
-<span id="cb37-2"><a href=""></a>    AUTHOR = {Leluc, R\'emi and Portier, Fran\c cois and Segers, Johan},</span>
-<span id="cb37-3"><a href=""></a>     TITLE = {Control variate selection for {M}onte {C}arlo integration},</span>
-<span id="cb37-4"><a href=""></a>   JOURNAL = {Stat. Comput.},</span>
-<span id="cb37-5"><a href=""></a>  FJOURNAL = {Statistics and Computing},</span>
-<span id="cb37-6"><a href=""></a>    VOLUME = {31},</span>
-<span id="cb37-7"><a href=""></a>      YEAR = {2021},</span>
-<span id="cb37-8"><a href=""></a>    NUMBER = {4},</span>
-<span id="cb37-9"><a href=""></a>     PAGES = {Paper No. 50, 27},</span>
-<span id="cb37-10"><a href=""></a>      ISSN = {0960-3174,1573-1375},</span>
-<span id="cb37-11"><a href=""></a>   MRCLASS = {62J07 (65C05)},</span>
-<span id="cb37-12"><a href=""></a>  MRNUMBER = {4277333},</span>
-<span id="cb37-13"><a href=""></a>       DOI = {10.1007/s11222-021-10011-z},</span>
-<span id="cb37-14"><a href=""></a>       URL = {https://doi.org/10.1007/s11222-021-10011-z},</span>
-<span id="cb37-15"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb38-1"><a href=""></a>@article {MR4277333,</span>
+<span id="cb38-2"><a href=""></a>    AUTHOR = {Leluc, R\'emi and Portier, Fran\c cois and Segers, Johan},</span>
+<span id="cb38-3"><a href=""></a>     TITLE = {Control variate selection for {M}onte {C}arlo integration},</span>
+<span id="cb38-4"><a href=""></a>   JOURNAL = {Stat. Comput.},</span>
+<span id="cb38-5"><a href=""></a>  FJOURNAL = {Statistics and Computing},</span>
+<span id="cb38-6"><a href=""></a>    VOLUME = {31},</span>
+<span id="cb38-7"><a href=""></a>      YEAR = {2021},</span>
+<span id="cb38-8"><a href=""></a>    NUMBER = {4},</span>
+<span id="cb38-9"><a href=""></a>     PAGES = {Paper No. 50, 27},</span>
+<span id="cb38-10"><a href=""></a>      ISSN = {0960-3174,1573-1375},</span>
+<span id="cb38-11"><a href=""></a>   MRCLASS = {62J07 (65C05)},</span>
+<span id="cb38-12"><a href=""></a>  MRNUMBER = {4277333},</span>
+<span id="cb38-13"><a href=""></a>       DOI = {10.1007/s11222-021-10011-z},</span>
+<span id="cb38-14"><a href=""></a>       URL = {https://doi.org/10.1007/s11222-021-10011-z},</span>
+<span id="cb38-15"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bibtex-databases" class="slide level2">
@@ -1206,13 +1223,13 @@ Nicolas Chopin
 </section>
 <section id="author-year-citations" class="slide level2">
 <h2>Author-year citations</h2>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb38-1"><a href=""></a>\usepackage[authoryear]{natbib}</span>
-<span id="cb38-2"><a href=""></a>\bibliographystyle{apalike} % see natbib doc for other styles</span>
-<span id="cb38-3"><a href=""></a></span>
-<span id="cb38-4"><a href=""></a>. . . </span>
-<span id="cb38-5"><a href=""></a></span>
-<span id="cb38-6"><a href=""></a>% where you want to insert the bibliography</span>
-<span id="cb38-7"><a href=""></a>\bibliography{./bib/my_biblio} % relative path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb39-1"><a href=""></a>\usepackage[authoryear]{natbib}</span>
+<span id="cb39-2"><a href=""></a>\bibliographystyle{apalike} % see natbib doc for other styles</span>
+<span id="cb39-3"><a href=""></a></span>
+<span id="cb39-4"><a href=""></a>. . . </span>
+<span id="cb39-5"><a href=""></a></span>
+<span id="cb39-6"><a href=""></a>% where you want to insert the bibliography</span>
+<span id="cb39-7"><a href=""></a>\bibliography{./bib/my_biblio} % relative path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><p>narrative citation: <code>\citet{key}</code>. Tsybakov (2002) proved that …</p></li>
 <li class="fragment"><p>parenthetical citation: <code>\citep{key}</code>. Such estimators are consistent (Tsybakov, 2002).</p></li>
@@ -1221,7 +1238,7 @@ Nicolas Chopin
 <section id="numeric-citations" class="slide level2">
 <h2>Numeric citations</h2>
 <p>Simply replace option <code>optionyear</code> by <code>numbers</code>; add <code>square</code> if you want citations like this: [3].</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb39-1"><a href=""></a>\usepackage[numbers, square]{natbib}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb40-1"><a href=""></a>\usepackage[numbers, square]{natbib}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>You can still use <code>\citet</code> and <code>\citep</code>:</p>
 <ul>
@@ -1264,10 +1281,10 @@ Nicolas Chopin
 <section id="compiling-latex-into-a-pdf" class="slide level2">
 <h2>Compiling LaTeX (into a pdf)</h2>
 <p>Problem: to compile a LaTeX file with a bibliography, you are supposed to do:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb40-1"><a href=""></a>pdflatex main.tex</span>
-<span id="cb40-2"><a href=""></a>pdflatex main.tex</span>
-<span id="cb40-3"><a href=""></a>bibtex main</span>
-<span id="cb40-4"><a href=""></a>pdflatex main.tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb41-1"><a href=""></a>pdflatex main.tex</span>
+<span id="cb41-2"><a href=""></a>pdflatex main.tex</span>
+<span id="cb41-3"><a href=""></a>bibtex main</span>
+<span id="cb41-4"><a href=""></a>pdflatex main.tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Add a few more lines if you generate a glossary, a TOC, …</p>
 </div>
@@ -1275,10 +1292,10 @@ Nicolas Chopin
 <section id="solution-latexmk" class="slide level2">
 <h2>Solution: latexmk</h2>
 <p><code>latexmk</code> is a Perl script that runs LaTeX (and friends) the correct number of times. Simply run:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb41-1"><a href=""></a>latexmk main.tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb42-1"><a href=""></a>latexmk main.tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>You can also use it to clean intermediary files (useful before a git commit):</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb42-1"><a href=""></a>latexmk -c main.tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb43-1"><a href=""></a>latexmk -c main.tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><code>latexmk</code> should already be available in your LaTeX distribution. By the way, when you click “compile” on Overleaf, it runs <code>latexmk</code>.</p>
@@ -1287,8 +1304,8 @@ Nicolas Chopin
 <section id="latexdiff-to-compare-two-versions-of-your-paper" class="slide level2">
 <h2>latexdiff to compare two versions of your paper</h2>
 <p>In other words, you want to <strong>diff</strong> the two files.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb43-1"><a href=""></a>latexdiff old.tex new.tex &gt; diff.tex</span>
-<span id="cb43-2"><a href=""></a>latexmk diff.tex  # create the PDF showing the changes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb44-1"><a href=""></a>latexdiff old.tex new.tex &gt; diff.tex</span>
+<span id="cb44-2"><a href=""></a>latexmk diff.tex  # create the PDF showing the changes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-right">
 <figure>
 <p><a href="figs/latexdiff.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="figs/latexdiff.png" class="quarto-figure quarto-figure-right"></a></p>
@@ -1320,38 +1337,38 @@ Nicolas Chopin
 <section id="slides" class="slide level2">
 <h2>slides</h2>
 <p>The standard class to generate slides in LaTeX is <a href="https://ctan.org/pkg/beamer">beamer</a>.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb44-1"><a href=""></a>\documentclass{beamer}</span>
-<span id="cb44-2"><a href=""></a>\title{My talk}</span>
-<span id="cb44-3"><a href=""></a>\author{My name}</span>
-<span id="cb44-4"><a href=""></a>\institute{University of Oxbridge}</span>
-<span id="cb44-5"><a href=""></a></span>
-<span id="cb44-6"><a href=""></a>\begin{document}</span>
-<span id="cb44-7"><a href=""></a></span>
-<span id="cb44-8"><a href=""></a>\frame{\titlepage}</span>
-<span id="cb44-9"><a href=""></a></span>
-<span id="cb44-10"><a href=""></a>\begin{frame}\frametitle{Title of first slide}</span>
-<span id="cb44-11"><a href=""></a>  \begin{itemize}</span>
-<span id="cb44-12"><a href=""></a>    \item First point</span>
-<span id="cb44-13"><a href=""></a>    \item Second point</span>
-<span id="cb44-14"><a href=""></a>  \end{itemize}</span>
-<span id="cb44-15"><a href=""></a>\end{frame}</span>
-<span id="cb44-16"><a href=""></a></span>
-<span id="cb44-17"><a href=""></a>\end{document}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb45-1"><a href=""></a>\documentclass{beamer}</span>
+<span id="cb45-2"><a href=""></a>\title{My talk}</span>
+<span id="cb45-3"><a href=""></a>\author{My name}</span>
+<span id="cb45-4"><a href=""></a>\institute{University of Oxbridge}</span>
+<span id="cb45-5"><a href=""></a></span>
+<span id="cb45-6"><a href=""></a>\begin{document}</span>
+<span id="cb45-7"><a href=""></a></span>
+<span id="cb45-8"><a href=""></a>\frame{\titlepage}</span>
+<span id="cb45-9"><a href=""></a></span>
+<span id="cb45-10"><a href=""></a>\begin{frame}\frametitle{Title of first slide}</span>
+<span id="cb45-11"><a href=""></a>  \begin{itemize}</span>
+<span id="cb45-12"><a href=""></a>    \item First point</span>
+<span id="cb45-13"><a href=""></a>    \item Second point</span>
+<span id="cb45-14"><a href=""></a>  \end{itemize}</span>
+<span id="cb45-15"><a href=""></a>\end{frame}</span>
+<span id="cb45-16"><a href=""></a></span>
+<span id="cb45-17"><a href=""></a>\end{document}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="use-quarto-instead" class="slide level2">
 <h2>Use Quarto instead</h2>
 <p>The verbosity of LaTeX + beamer is really a pain, I strongly recommend you use <a href="">quarto</a> instead:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource {markdown} number-lines code-with-copy"><code class="sourceCode"><span id="cb45-1"><a href=""></a>---</span>
-<span id="cb45-2"><a href=""></a>title: My talk</span>
-<span id="cb45-3"><a href=""></a>author: My name</span>
-<span id="cb45-4"><a href=""></a>institute: University of Oxbridge</span>
-<span id="cb45-5"><a href=""></a>---</span>
-<span id="cb45-6"><a href=""></a></span>
-<span id="cb45-7"><a href=""></a># First slide</span>
-<span id="cb45-8"><a href=""></a></span>
-<span id="cb45-9"><a href=""></a>* first point</span>
-<span id="cb45-10"><a href=""></a></span>
-<span id="cb45-11"><a href=""></a>* second point</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource {markdown} number-lines code-with-copy"><code class="sourceCode"><span id="cb46-1"><a href=""></a>---</span>
+<span id="cb46-2"><a href=""></a>title: My talk</span>
+<span id="cb46-3"><a href=""></a>author: My name</span>
+<span id="cb46-4"><a href=""></a>institute: University of Oxbridge</span>
+<span id="cb46-5"><a href=""></a>---</span>
+<span id="cb46-6"><a href=""></a></span>
+<span id="cb46-7"><a href=""></a># First slide</span>
+<span id="cb46-8"><a href=""></a></span>
+<span id="cb46-9"><a href=""></a>* first point</span>
+<span id="cb46-10"><a href=""></a></span>
+<span id="cb46-11"><a href=""></a>* second point</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Note that quarto can generate both PDF slides (using beamer) and HTML slides (using revealjs). You are looking at quarto-generated slides, btw!</p>
 </div>
