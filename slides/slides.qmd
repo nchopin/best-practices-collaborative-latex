@@ -265,9 +265,9 @@ write:
 ## (La)TeX was a game changer for scientists
 
 ::: {layout-ncol=2}
-![Korostelëv and Tsybakov, 1993](figs/Korostelev_Tsybakov93.svg){width=65%}
+![Korostelëv and Tsybakov, 1993](figs/Korostelev_Tsybakov93.pdf){width=65%}
 
-![Tsybakov, 2009](figs/Tsybakov2009.svg){width=65%}
+![Tsybakov, 2009](figs/Tsybakov2009.pdf){width=65%}
 :::
 
 
@@ -769,6 +769,20 @@ I use the latter personally.
 **Important**: **ALWAYS PUT CAPTION FIRST, LABEL SECOND**. 
 See [this](http://www.terminally-incoherent.com/blog/2007/04/14/latex-fixing-wrong-figure-numbers/) 
 blog post.
+
+## Figure placement
+
+To specify the location of the figure:
+```{latex}
+\begin{figure}[h] % h = here, t = top, h! = here (force), ...
+  . . . 
+\end{figure}
+```
+
+. . .
+
+But again, worry about this only at the end of the writing process. (And the
+journal will typically deal with figures in its own way.)
 
 ## Figure files
 

@@ -1,4 +1,5 @@
 \documentclass{scrartcl}  % article class from KOMA-Script (A4 compatible)
+% amsart is also a good default 
 
 % Essential packages
 % ==================
@@ -29,7 +30,7 @@
 
 \usepackage{hyperref}  % hyper-links in PDF
 \usepackage{cleveref}  % Clever cross-references; must be loaded *after* hyperref
-\usepackage{dsfont}  % mathds{1} for indicator (part of doublestroke package)
+\usepackage{dsfont}  % \mathds{1} for indicator function
 \usepackage{algorithm2e}  % algorithms
 
 % Packages that may be useful in certain cases (uncomment if needed)
@@ -37,8 +38,8 @@
 
 % PhD thesis, book
 %\usepackage{glossaries}  % as the name suggests
-%\usepackage[a4paper]{geometry}  % or use a KOMA class (scrbook for books)
-%\usepackage[french, english]{babel}  % use both languages in same document
+%\usepackage[a4paper]{geometry}  % not needed with a KOMA class (scrbook for books)
+%\usepackage[french, english]{babel}  % use both languages in the same document
 
 % revision
 %\usepackage{todonotes}  % as the name suggests
@@ -54,7 +55,10 @@
 % Macros (don't go crazy!)
 % ========================
 
-\newcommand{\R}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}} % set of real numbers
+\newcommand*\dd{\mathop{}\!\mathrm{d}} % d in dx in an integral (+ proper spacing)
+
+
 
 \begin{document}
 
@@ -79,10 +83,10 @@ the paper by \citet{cristina_arxiv}.  We can also do citations in parenthesis
 \section{Main results}\label{sec:results}
 
 No blank line before an equation:
-\[ \int_0^1 \sin(x) dx = 0
+\[ \int_0^{2\pi} \sin(x) \dd x = 0
 \]
 and no blank line after, unless the equation ends the paragraph. (In that case,
-add a dot at the end of the equation.)
+make sure there is a dot at the end of the equation.)
 
 We are very proud of our theorem.
 \begin{thm}
@@ -105,9 +109,10 @@ Time to show a nice image; see \cref{fig:boxplot_first}.
   \end{center}
   \caption{credits: PhD comics}
   \label{fig:boxplot_first}
+  % WARNING: first caption, then label
 \end{figure}
 
-
+% You can also put the bibliography after the appendix
 \bibliography{bib/my_biblio}
 
 \appendix
