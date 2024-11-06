@@ -31,7 +31,7 @@ You can preview the slides of the course
 These slides were generated with [quarto](https://quarto.org/). Assuming you
 have installed quarto, you can generate the html file like this:
 ```{bash}
-pandoc render slides.qmd --to revealjs
+quarto render slides.qmd --to revealjs
 ```
 
 Replace `revealjs` by `beamer` if you'd rather generate the slides in pdf
