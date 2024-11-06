@@ -439,9 +439,9 @@ Nicolas Chopin
 <ul>
 <li class="fragment">you cannot login (no connexion, the site is down, etc.)</li>
 <li class="fragment">the company goes bust</li>
-<li class="fragment">Overleaf <em>enshitiffies</em></li>
+<li class="fragment">Overleaf <strong>enshitiffies</strong></li>
 </ul></li>
-<li class="fragment"><p>Is running an editor <em>inside</em> your browser a good idea? (e.g., keyboard shortcuts)</p></li>
+<li class="fragment"><p>Is running an editor <strong>inside</strong> your browser a good idea? (e.g., keyboard shortcuts)</p></li>
 <li class="fragment"><p>Is sending an overleaf link to co-authors out of the blue is really polite?</p></li>
 </ul>
 </section>
@@ -471,13 +471,13 @@ Nicolas Chopin
 </section>
 <section id="ascii-table" class="slide level2">
 <h2>ASCII table</h2>
-<p><a href="figs/ascii_table.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="figs/ascii_table.png" style="width:70.0%"></a></p>
+<p><a href="figs/ascii_table.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="figs/ascii_table.png" style="width:60.0%"></a></p>
 </section>
 <section id="rise-of-utf-8" class="slide level2">
 <h2>Rise of UTF-8</h2>
-<div class="quarto-figure quarto-figure-right">
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="figs/rise_of_utf8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="figs/rise_of_utf8.png" class="quarto-figure quarto-figure-right"></a></p>
+<p><a href="figs/rise_of_utf8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="figs/rise_of_utf8.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></a></p>
 </figure>
 </div>
 </section>
@@ -487,8 +487,8 @@ Nicolas Chopin
 <ol type="1">
 <li class="fragment"><p>Your text editor is in UTF-8 mode.</p></li>
 <li class="fragment"><p>Your tex file includes:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href=""></a> \usepackage[utf8]{inputenc} % encoding for input (this file)</span>
-<span id="cb1-2"><a href=""></a> \usepackage[T1]{fontenc} % font encoding (output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href=""></a> \usepackage[utf8]{inputenc}  % encoding for input (this file)</span>
+<span id="cb1-2"><a href=""></a> \usepackage[T1]{fontenc}  % font encoding (output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 <div class="fragment">
 <p>You need <strong>BOTH</strong>.</p>
@@ -521,10 +521,7 @@ Nicolas Chopin
 <li class="fragment"><p>…</p></li>
 </ul>
 <div class="fragment">
-<p>All these conventions are here to make the code more <strong>readable</strong>.</p>
-</div>
-<div class="fragment">
-<p>See also this ENSAE <a href="https://ensae-reproductibilite.github.io/website/">course</a>.</p>
+<p>All these conventions are here to make the code more <strong>readable</strong>. See also this ENSAE <a href="https://ensae-reproductibilite.github.io/website/">course</a>.</p>
 </div>
 </section>
 <section id="style-guide-for-latex" class="slide level2">
@@ -617,7 +614,7 @@ Nicolas Chopin
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="figs/Korostelev_Tsybakov93.pdf" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Korostelëv and Tsybakov, 1993"><embed data-src="figs/Korostelev_Tsybakov93.pdf" style="width:65.0%"></a></p>
+<p><a href="figs/Korostelev_Tsybakov93.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Korostelëv and Tsybakov, 1993"><img data-src="figs/Korostelev_Tsybakov93.svg" style="width:70.0%" alt="Korostelëv and Tsybakov, 1993"></a></p>
 <figcaption>Korostelëv and Tsybakov, 1993</figcaption>
 </figure>
 </div>
@@ -625,7 +622,7 @@ Nicolas Chopin
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="figs/Tsybakov2009.pdf" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Tsybakov, 2009"><embed data-src="figs/Tsybakov2009.pdf" style="width:65.0%"></a></p>
+<p><a href="figs/Tsybakov2009.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Tsybakov, 2009"><img data-src="figs/Tsybakov2009.svg" style="width:70.0%" alt="Tsybakov, 2009"></a></p>
 <figcaption>Tsybakov, 2009</figcaption>
 </figure>
 </div>
@@ -678,11 +675,11 @@ Nicolas Chopin
 <section id="the-ams-packages" class="slide level2">
 <h2>The AMS packages</h2>
 <p>AMS = American Mathematical Association.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href=""></a>\usepackage{amsmath} % main AMS package</span>
-<span id="cb4-2"><a href=""></a>\usepackage{amsthm} % theorems (must define your own theorem envs)</span>
-<span id="cb4-3"><a href=""></a>\usepackage{amssymb} % math symbols, e.g. \mathbb{R}</span>
-<span id="cb4-4"><a href=""></a>\usepackage{amsfonts} % better fonts for math</span>
-<span id="cb4-5"><a href=""></a>\usepackage{mathtools} % extends amsmath (e.g. \eqcolon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href=""></a>\usepackage{amsmath}  % main AMS package</span>
+<span id="cb4-2"><a href=""></a>\usepackage{amsthm}  % theorems (must define your own theorem envs)</span>
+<span id="cb4-3"><a href=""></a>\usepackage{amssymb}  % math symbols, e.g. \mathbb{R}</span>
+<span id="cb4-4"><a href=""></a>\usepackage{amsfonts}  % better fonts for math</span>
+<span id="cb4-5"><a href=""></a>\usepackage{mathtools}  % extends amsmath (e.g. \eqcolon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Essential packages, the rest of this section assumes they are used.</p>
 </section>
 <section id="in-line-math" class="slide level2">
@@ -787,8 +784,8 @@ Nicolas Chopin
 <li class="fragment"><p><strong>DO NOT</strong> use deprecated environments like <code>eqnarray</code> (more complicated to use, bad spacing).</p></li>
 </ul>
 </section>
-<section id="another-multi-line-environment-that-is-sometimes-useful" class="slide level2">
-<h2>Another multi-line environment that is sometimes useful</h2>
+<section id="multi-line-environment-that-is-sometimes-useful" class="slide level2">
+<h2>Multi-line environment that is sometimes useful</h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a href=""></a>\begin{multline}</span>
 <span id="cb14-2"><a href=""></a>  f(x) = \int_0^x \sin(3 y)  \exp\{ - 3 y x\} \mathrm{d}y \\</span>
 <span id="cb14-3"><a href=""></a>         + \sum_{k} \log(x-k) - \prod_{i=1}^7 \exp(-i)</span>
@@ -810,7 +807,7 @@ Nicolas Chopin
 <section id="theorems-bis" class="slide level2">
 <h2>Theorems bis</h2>
 <p>Then you can state your theorems like this:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a href=""></a>\begin{theorem}[La Palice]</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a href=""></a>\begin{theorem}[La Palice]\label{thm:palice}</span>
 <span id="cb16-2"><a href=""></a>  For any $x&gt;0$, we have $x^2&gt;0$. </span>
 <span id="cb16-3"><a href=""></a>\end{theorem}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The part in <code>[La Palice]</code> is optional.</p>
@@ -826,7 +823,7 @@ Nicolas Chopin
 </section>
 <section id="text-in-equations" class="slide level2">
 <h2>Text in equations</h2>
-<p>To write text in equations, use… <code>\text</code>:</p>
+<p>To write text inside equations, use… <code>\text</code>:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href=""></a>\[</span>
 <span id="cb18-2"><a href=""></a>   x^2 &gt; 0, \text{for all} x &gt; 0</span>
 <span id="cb18-3"><a href=""></a>\]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -917,7 +914,7 @@ Nicolas Chopin
 </section>
 <section id="example-of-a-very-bad-macro" class="slide level2">
 <h2>Example of a very bad macro</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a href=""></a> \newcommand{\pf}{\begin{proof}} % hide structure behind ridiculous macro</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a href=""></a> \newcommand{\pf}{\begin{proof}}  % hide structure behind ridiculous macro</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Use this only if you hate your co-authors.</p>
 </div>
@@ -925,7 +922,7 @@ Nicolas Chopin
 <section id="renewcommand" class="slide level2">
 <h2>Renewcommand</h2>
 <p>It’s possible to re-define existing commands:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a href=""></a> \renewcommand{\P}{\mathbb{P}} % Probability symbol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a href=""></a> \renewcommand{\P}{\mathbb{P}}  % Probability symbol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Just don’t. Again, readability.</p>
 </div>
@@ -1004,13 +1001,13 @@ Nicolas Chopin
 </section>
 <section id="my-recommendation" class="slide level2">
 <h2>My recommendation</h2>
-<p>Use package <code>cleveref</code>. To write, e.g.&nbsp;“See Figure X”, use:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb28-1"><a href=""></a>See \cref{fig:boxplot}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Use package <code>cleveref</code>. To write, e.g.&nbsp;“See Figure X.”, use:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb28-1"><a href=""></a>See \cref{fig:boxplot}.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>This way:</p>
 <ul>
 <li class="fragment"><p>you don’t forget unbreakable spaces;</p></li>
-<li class="fragment"><p>you ensure consistency among authors for the word <code>Figure</code> (i.e., Figure or figure, or Fig., or fig.)</p></li>
+<li class="fragment"><p>you ensure consistency among authors for the word <code>Figure</code> (Figure/figure/Fig./fig., see options <code>noabbrev</code> and <code>capitalise</code>)</p></li>
 <li class="fragment"><p><code>cleveref</code> does not require labels such as <code>fig:name</code>, or <code>sec:name</code>, but still recommended to increase readability.</p></li>
 </ul>
 </div>
@@ -1025,9 +1022,9 @@ Nicolas Chopin
 </section>
 <section id="hyperref" class="slide level2">
 <h2>Hyperref</h2>
-<p>PDF files may include hyper-links, like <a href="">this</a>. Every labelled item may become a hyper-link if you use package <code>hyperref</code>.</p>
+<p>PDF files may include hyper-links, like <a href="https://ctan.org/">this</a>. Every labelled item may become a hyper-link if you use package <code>hyperref</code>.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb29-1"><a href=""></a>\usepackage{hyperref}</span>
-<span id="cb29-2"><a href=""></a>\usepackage{cleveref} % must be loaded *after* hyperref, because reasons</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-2"><a href=""></a>\usepackage{cleveref}  % must be loaded *after* hyperref, because reasons</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="more-on-unbreakable-spaces" class="slide level2">
 <h2>More on unbreakable spaces</h2>
@@ -1038,7 +1035,8 @@ Nicolas Chopin
 <h2>Other types of spaces</h2>
 <p>Whenever LaTeX encounters a dot, it inserts an <strong>inter-sentence</strong> (=big) space. This is problematic for abbreviations.</p>
 <ul>
-<li class="fragment"><strong>TIP</strong>:To deal with “i.e.” and “e.g.”, put a comma next to it: <em>an estimator such as, e.g., the MLE…</em>. No inter-sentence space, and stylistically better (apparently).</li>
+<li class="fragment"><p><strong>TIP</strong>:To deal with “i.e.” and “e.g.”, put a comma next to it: <em>an estimator such as, e.g., the MLE…</em>. No inter-sentence space, and stylistically better (apparently).</p></li>
+<li class="fragment"><p>Otherwise, add <code>\</code> after any dot that does not end a sentence: <code>Christian P.\ Robert</code>.</p></li>
 </ul>
 </section></section>
 <section>
@@ -1054,6 +1052,9 @@ Nicolas Chopin
 </ol>
 <div class="fragment">
 <p>I use the latter personally.</p>
+</div>
+<div class="fragment">
+<p>See also <a href="https://ctan.org/pkg/minted">minted</a> for source code.</p>
 </div>
 </section></section>
 <section>
@@ -1116,7 +1117,7 @@ Nicolas Chopin
 <ul>
 <li class="fragment"><p>Good practice to put all figures in folder <code>figs/</code>. You can also use sub-folders (e.g., for chapters).</p></li>
 <li class="fragment"><p>It’s possible to specify the figure folder like this:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb34-1"><a href=""></a>\graphicspath{ {./figs/} } % path relative to main tex file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb34-1"><a href=""></a>\graphicspath{ {./figs/} }  % path relative to main tex file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>but honestly, it’s equally easier to write <code>figs/...</code> in each <code>\includegraphics{}</code> command.</p></li>
 <li class="fragment"><p>don’t use absolute paths: will not work for your co-authors.</p></li>
 </ul>
@@ -1223,12 +1224,12 @@ Nicolas Chopin
 <section id="author-year-citations" class="slide level2">
 <h2>Author-year citations</h2>
 <div class="sourceCode" id="cb39"><pre class="sourceCode numberSource {latex} number-lines code-with-copy"><code class="sourceCode"><span id="cb39-1"><a href=""></a>\usepackage[authoryear]{natbib}</span>
-<span id="cb39-2"><a href=""></a>\bibliographystyle{apalike} % see natbib doc for other styles</span>
+<span id="cb39-2"><a href=""></a>\bibliographystyle{apalike}  % see natbib doc for other styles</span>
 <span id="cb39-3"><a href=""></a></span>
 <span id="cb39-4"><a href=""></a>. . . </span>
 <span id="cb39-5"><a href=""></a></span>
 <span id="cb39-6"><a href=""></a>% where you want to insert the bibliography</span>
-<span id="cb39-7"><a href=""></a>\bibliography{./bib/my_biblio} % relative path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-7"><a href=""></a>\bibliography{./bib/my_biblio}  % relative path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><p>narrative citation: <code>\citet{key}</code>. Tsybakov (2002) proved that …</p></li>
 <li class="fragment"><p>parenthetical citation: <code>\citep{key}</code>. Such estimators are consistent (Tsybakov, 2002).</p></li>
@@ -1248,7 +1249,7 @@ Nicolas Chopin
 </section>
 <section id="bibliography-tools" class="slide level2">
 <h2>Bibliography tools</h2>
-<p>It is ok to keep adding references to the same bibtex over the years. When it gets big, you may want to manage it through some dedicated <strong>database</strong> tool, such as <a href="https://www.jabref.org">jabref</a>.</p>
+<p>It’s ok to keep adding references to the same bibtex over the years. When it gets big, you may want to manage it through some dedicated <strong>database</strong> tool, such as <a href="https://www.jabref.org">jabref</a>.</p>
 <div class="fragment">
 <p>Jabref treats your bibtex file as a reference database. A different approach is to use a tool to manage your collection of papers, from which you can then extract a bibtex file; see for instance <a href="https://www.zotero.org/">zotero</a>.</p>
 </div>
