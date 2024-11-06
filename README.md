@@ -11,6 +11,18 @@ with LaTeX (often through Overleaf), and would like to learn tips on how to use
 LaTeX effectively, in particular to write scientific papers, jointly with
 collaborators.
 
+Covered topics:
+
+* encodings
+* (AMS) math: single and multi-line equations, math operators, theorems
+* macros
+* cross-references
+* figures
+* LaTeX and git
+* bibtex
+* latexmk, latexdiff
+* slides (using quarto)
+
 ## Slides ##
 
 You can preview the slides of the course
